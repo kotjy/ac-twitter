@@ -19,3 +19,4 @@ export const useMainFunction = () => {
   const MainData = useContext(MainContext);
   return MainData;
 };
+
