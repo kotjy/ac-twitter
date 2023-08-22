@@ -7,7 +7,7 @@ const LoginPage = () => {
 return (
     <container>
       <div>
-        <AClogo/>
+      <AClogo/>
       </div>
       <h1>登入 Todo</h1>
       <div className={styles.authInputContainer}>
