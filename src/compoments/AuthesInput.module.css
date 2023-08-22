@@ -1,0 +1,24 @@
+.authInputContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f5f8fa;
+  width: 100%;
+  height: 54px;
+  border-bottom: 2px solid black;
+}
+
+.authInputLabel{
+    font-size: 14;
+    color: '#696974';
+    text-align: start;
+
+}
+
+.authInputInput{
+  outline: none;
+  border: none;
+  background-color: #f5f8fa;
+  border-radius: 0px;
+}
+
