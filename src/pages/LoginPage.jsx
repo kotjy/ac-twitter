@@ -1,5 +1,5 @@
-import {AuthInput} from '../compoments/AuthesInput'
-import { ReactComponent as AClogo} from '..assets/alphacamp-logo.svg'
+import AuthInput from '../compoments/AuthesInput'
+import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 
 const LoginPage = () => {
@@ -17,6 +17,7 @@ return (
          value="" 
          />
       </div>
+      <button className={styles.Authbutton}>登入</button>
     </container>
 )
 
