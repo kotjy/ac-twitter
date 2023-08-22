@@ -1,5 +1,7 @@
 import SideBar from "../../components/SideBar/SideBar";
+
 import PopularList from "../../components/PopularList/PopularList";
+
 
 
 function Main() {
@@ -15,6 +17,7 @@ function Main() {
     </div>
   )
 }
+
 
 
 
