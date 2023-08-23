@@ -1,4 +1,4 @@
-import AuthInput from '../compoments/AuthesInput'
+import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 

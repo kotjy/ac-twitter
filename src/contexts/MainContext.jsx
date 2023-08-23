@@ -9,7 +9,7 @@ export const MainProvider = ({children}) => {
     const [text, setText] = useState('');//輸入文字
     const [prompt, setPrompt] = useState('');//彈出視窗的文字提示
 
-    const [activeSection, setActiveSection] = useState('main');//顯示頁面
+  
     const [userData, setUserData] = useState();//使用者資料
 
 
