@@ -1,5 +1,14 @@
-.authInputContainer{
-width: 50%;
+.Container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.AuthInputContainer{
+width: 30%;
 margin-top: 30px;
 }
 
@@ -7,14 +16,21 @@ margin-top: 30px;
     border-radius: 30px;
     background-color: #ff6600;
     border: none;
-  
     color: white;
-    min-width: 300px;
+    min-width: 30%;
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: bold;
-    padding: 6px 0;
+    padding: 10px 0;
     margin: 2rem 0;
-}
+
     &.hover {
       cursor: pointer;
     }
+}
+
+.LinkText{
+color: #5e97f1;
+font-size: 16px;
+font-weight: 400;
+cursor: pointer;
+}
