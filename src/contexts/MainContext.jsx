@@ -4,7 +4,9 @@ const MainContext = createContext();
 
 export const MainProvider = ({children}) => {
     const [activeSection, setActiveSection] = useState('main')
-      
+    
+    const [text, setText] = useState('');//輸入文字
+    const [prompt, setPrompt] = useState('');//彈出視窗的文字提示
     //以下為處理otherProfile的state 
     const [ otherUserData, setOtherUserData ] = useState([]);
 
@@ -13,7 +15,12 @@ export const MainProvider = ({children}) => {
     activeSection,
     setActiveSection,
     otherUserData,
-    setOtherUserData
+    setOtherUserData,
+    text,
+    setText,
+    prompt,
+    setPrompt,
+
 
    }   
  return <MainContext.Provider value ={value}>{children}</MainContext.Provider>
