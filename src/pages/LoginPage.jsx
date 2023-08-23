@@ -25,7 +25,7 @@ return (
       </div>
       <button className={styles.Authbutton}>登入</button>
 
-      <div>
+      <div className={styles.LinkContainer}>
       <u className={styles.LinkText}>註冊 Alphitter</u>
       <span className={styles.LinkText}>.</span>
       <u className={styles.LinkText}>後台登入</u>
