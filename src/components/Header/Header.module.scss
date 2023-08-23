@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  height:74px;
+  padding-left: 24px;
+  font-weight: 700;
+  font-size:24px;
+  line-height:26px;
+  border-bottom: #e6ecf0 1px solid;
+  position:sticky;
+  align-items: center;
+  top:0;
+  background-color: rgb(255, 255, 255);
+  z-index: 5;
+   
+   .content{
+    text-decoration: none;
+    color:#171725;
+
+     .userTitleWrap{
+      display: grid;
+      
+       .tweetText {
+        font-size:13px;
+        font-weight:500;
+        color:#6c757D;
+       }
+
+     }
+   }
+
+   .leftArrow{
+    margin:5px 16px 0 8px ;
+   }
+
+   .arrow{
+    margin-right: 1rem;
+    cursor:pointer;
+   }
+}
