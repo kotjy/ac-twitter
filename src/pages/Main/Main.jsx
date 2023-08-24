@@ -12,10 +12,12 @@ function Main() {
 
 
     <div>
+      
       <SideBar/>
       <MainSection />
       <PopularList />
       <TweetModal />
+      
     </div>
   )
 }
