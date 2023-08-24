@@ -2,12 +2,11 @@ import styles from './TweetModal.module.scss'
 import fakeAvatar from '../../assets/fake-avatar.svg'
 import TextareaAutosize from 'react-textarea-autosize'
 import IconX from '../../assets/X-icon.svg'
-import { useMainFunction } from '../../contexts/MainContext'
 import { Link } from 'react-router-dom'
 
-export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userData}) {
+export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userData,texts,prompts}) {
 
-  const {texts, prompts} = useMainFunction();
+  
   const account = userData?.User?.account;
 
   return(
