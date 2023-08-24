@@ -19,7 +19,7 @@ margin-top: 30px;
     background-color: #ff6600;
     border: none;
     color: white;
-    min-width: 20%;
+    min-width: 30%;
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: bold;
     padding: 10px 0;
@@ -32,6 +32,21 @@ color: #5e97f1;
 font-size: 16px;
 font-weight: 400;
 cursor: pointer;
+}
+
+.EndLinkText{
+    display: flex;
+    justify-content: flex-end;
+    color: #5e97f1;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.LinkContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
 }
 
 /* settingpage 相關 */
