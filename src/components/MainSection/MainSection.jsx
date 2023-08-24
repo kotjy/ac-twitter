@@ -1,6 +1,7 @@
 import Header from '../Header/Header.jsx'
 import { useMainFunction } from '../../contexts/MainContext'
 import TweetInput from '../TweetInput/TweetInput.jsx';
+import ReplyPost from '../ReplyPost/ReplyPost.jsx';
 
 function MainSection () {
   const { otherUserData, activeSection } = useMainFunction();
@@ -13,6 +14,13 @@ function MainSection () {
   )
  }
 
+  function ReplyPage () {
+    return(
+      <>
+       <ReplyPost />
+      </>
+    )
+  }
 
   return(
     <div className= {StyleSheet.container}>
@@ -22,7 +30,9 @@ function MainSection () {
 
       {/*Main Page */}
       {activeSection === 'main' && <HomePage />} 
-
+      
+      {/*Reply Page */}
+      {activeSection === 'reply' &&  <ReplyPage />}
     </div>
   )
 }
