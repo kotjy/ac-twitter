@@ -1,8 +1,15 @@
 import AuthInput from '../components/AuthlesInput/AuthesInput'
 import styles from './LoginPage.module.css'
 import SideBar from '../components/SideBar/SideBar'
+import { useEffect, useState } from 'react';
 
 const SettingPage = () => {
+    const [userName, setUserName]=useState('')
+    const [passWord, setpassWord]=useState('')
+    const [Name, setName]=useState('')
+    const [Email, setEmail]=useState('')
+    const [Surepassword, setSurepassword]=useState('')
+
     return(
         <div className={styles.SettingContainer}>
         <div className={styles.SettingSidebar}> 
@@ -11,35 +18,41 @@ const SettingPage = () => {
         <div className={styles.SettingDiv}> 
         <div className="">
         <p><b>帳戶設定</b></p>
+        <hr></hr>
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="帳號"
-           value="" 
+           value={userName}
+           onChange={(input)=>setUserName(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="名稱"
-           value="" 
+           value={Name}
+           onChange={(input) =>setName(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="Email"
-           value="" 
+           value={Email}
+           onChange={(input)=>setEmail(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="密碼"
-           value="" 
+           value={passWord}
+           onChange={(input)=>setpassWord(input)}  
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="確認密碼"
-           value="" 
+           value={Surepassword}
+           onChange={(input)=>setSurepassword(input)} 
            />
         </div>
         <div className={styles.ButtonContainer}>

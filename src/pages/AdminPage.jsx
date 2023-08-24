@@ -1,8 +1,13 @@
 import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
+import { useEffect, useState } from 'react';
 
 const AdminPage = () => {
+    const [userName, setUserName]=useState('')
+    const [passWord, setpassWord]=useState('')
+    
+
 return(
     <container className={styles.Container}>
         
@@ -13,13 +18,15 @@ return(
       <div className={styles.AuthInputContainer}>
          <AuthInput
          label="帳號"
-         value="" 
+         value={userName}
+         onChange={(input)=>setUserName(input)} 
          />
       </div>
       <div className={styles.AuthInputContainer}>
          <AuthInput
          label="密碼"
-         value="" 
+         value={passWord}
+         onChange={(input)=>setpassWord(input)} 
          />
       </div>
       <button className={styles.Authbutton}>登入</button>
