@@ -12,6 +12,7 @@ function Main() {
 
 
     <div>
+      
       <SideBar/>
       <MainSection />
       <PopularList />
