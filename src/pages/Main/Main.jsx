@@ -4,6 +4,7 @@ import PopularList from "../../components/PopularList/PopularList";
 import TweetModal from "../../components/TweetModal/TweetModal";
 import ReplyModal from "../../components/ReplyModal/ReplyModal";
 
+
 function Main() {
 
 
@@ -16,8 +17,8 @@ function Main() {
       <SideBar/>
       <MainSection />
       <PopularList />
-      <TweetModal />
-      <ReplyModal />
+      <TweetModal/>
+      <ReplyModal/>
     </div>
   )
 }
