@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ac-twitter/static/css/main.742fb637.css",
+    "main.js": "/ac-twitter/static/js/main.a772b1c0.js",
+    "static/js/787.5554a705.chunk.js": "/ac-twitter/static/js/787.5554a705.chunk.js",
+    "static/media/setting-black.svg": "/ac-twitter/static/media/setting-black.5499bde3dcc0a2f1c4417d2161bf9bf6.svg",
+    "static/media/setting-orange.svg": "/ac-twitter/static/media/setting-orange.c64537d3224017a1c7be2bbae1ff892d.svg",
+    "static/media/alphacamp-logo.svg": "/ac-twitter/static/media/alphacamp-logo.56aecd8933252a8fef2e5b7983119685.svg",
+    "static/media/logo.svg": "/ac-twitter/static/media/logo.0dd00921c3cab3feffe1a4181aff0024.svg",
+    "static/media/logout.svg": "/ac-twitter/static/media/logout.dee94923ce30356f104f9a0c86ed9273.svg",
+    "static/media/user-profile-black.svg": "/ac-twitter/static/media/user-profile-black.c2c406cdbc1dcc4febe757e3a62f56ec.svg",
+    "static/media/home-grey.svg": "/ac-twitter/static/media/home-grey.bf486ea086941d61df5caff249ee2966.svg",
+    "static/media/home.svg": "/ac-twitter/static/media/home.750f9fa8089db04fb3ef4cabf8c9a511.svg",
+    "static/media/user-profile.svg": "/ac-twitter/static/media/user-profile.5d93e266d68d698491fffe0efcf8edf8.svg",
+    "index.html": "/ac-twitter/index.html",
+    "main.742fb637.css.map": "/ac-twitter/static/css/main.742fb637.css.map",
+    "main.a772b1c0.js.map": "/ac-twitter/static/js/main.a772b1c0.js.map",
+    "787.5554a705.chunk.js.map": "/ac-twitter/static/js/787.5554a705.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.742fb637.css",
+    "static/js/main.a772b1c0.js"
+  ]
+}
