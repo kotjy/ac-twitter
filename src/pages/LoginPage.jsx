@@ -2,11 +2,20 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 const [userName, setUserName]=useState('')
 const [passWord, setpassWord]=useState('')
 
+const handleClick = async ()=> {
+if(userName.length = 0){
+    return;
+}
+if(passWord.length = 0){
+    return;
+}
+}
 return (
     <container className={styles.Container}>
         
@@ -28,8 +37,9 @@ return (
          onChange={(input)=>setpassWord(input)} 
          />
       </div>
-      <button className={styles.Authbutton}>登入</button>
-
+      <Link to='/main' className={styles.LinkStyle}>
+      <button className={styles.Authbutton} onClick={handleClick}>登入</button>
+      </Link>
       <div className={styles.LinkContainer}>
       <u className={styles.LinkText}>註冊 Alphitter</u>
       <span className={styles.LinkText}>.</span>

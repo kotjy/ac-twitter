@@ -2,6 +2,7 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
     const [userName, setUserName]=useState('')
