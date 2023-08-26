@@ -49,6 +49,13 @@ cursor: pointer;
     width: 30%;
 }
 
+.LinkStyle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;  
+}
+
 /* settingpage 相關 */
 .SettingContainer{
     display: flex;
