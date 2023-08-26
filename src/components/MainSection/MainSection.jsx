@@ -4,6 +4,8 @@ import TweetInput from '../TweetInput/TweetInput.jsx';
 import ReplyPost from '../ReplyPost/ReplyPost.jsx';
 import OtherProfile from '../OtherProfile/OtherProfile.jsx';
 
+import ReplyList from '../ReplyList/ReplyList.jsx';
+
 function MainSection ({otherUserId, onFollowClick}) {
   const { otherUserData, 
           activeSection,
@@ -25,6 +27,7 @@ function MainSection ({otherUserId, onFollowClick}) {
     return(
       <>
        <ReplyPost />
+       <ReplyList />
       </>
     )
   }
