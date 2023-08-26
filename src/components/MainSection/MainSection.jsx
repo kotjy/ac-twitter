@@ -3,6 +3,8 @@ import { useMainFunction } from '../../contexts/MainContext'
 import TweetInput from '../TweetInput/TweetInput.jsx';
 import ReplyPost from '../ReplyPost/ReplyPost.jsx';
 import OtherProfile from '../OtherProfile/OtherProfile.jsx';
+import TweetList from '../TweetList/TweetList.jsx';
+
 
 function MainSection ({otherUserId, onFollowClick}) {
   const { otherUserData, 
@@ -17,6 +19,7 @@ function MainSection ({otherUserId, onFollowClick}) {
   return(
     <>
      <TweetInput />
+     <TweetList />
     </>
   )
  }
