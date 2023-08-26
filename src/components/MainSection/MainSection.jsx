@@ -6,6 +6,8 @@ import OtherProfile from '../OtherProfile/OtherProfile.jsx';
 import TweetList from '../TweetList/TweetList.jsx';
 
 
+import ReplyList from '../ReplyList/ReplyList.jsx';
+
 function MainSection ({otherUserId, onFollowClick}) {
   const { otherUserData, 
           activeSection,
@@ -28,6 +30,7 @@ function MainSection ({otherUserId, onFollowClick}) {
     return(
       <>
        <ReplyPost />
+       <ReplyList />
       </>
     )
   }
