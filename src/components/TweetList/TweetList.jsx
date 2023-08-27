@@ -1,4 +1,4 @@
-import styles from './TweetList.module.scss'
+import styles from './tweetList.module.scss'
 import replyIcon from '../../assets/reply.svg'
 import likeIcon from '../../assets/like.svg'
 import redLikeIcon from '../../assets/redLike.svg'
