@@ -1,6 +1,6 @@
 import styles from './AuthesInput.module.css'
 
-const AuthInput = ({type,label,value,onChange}) =>{
+const AuthInput = ({type,label,value,onChange,placeholder}) =>{
    return(
      <container className={styles.authInputContainer}>
         <label className={styles.authInputLabel}>{label}</label>
@@ -8,7 +8,8 @@ const AuthInput = ({type,label,value,onChange}) =>{
           <input 
           className={styles.authInputInput}
           type={type ||'text'}
-          value={value} 
+          value={value || ''}
+          placeholder={placeholder || ''} 
           onChange={(event) => onChange?.(event.target.value)}
           />
 

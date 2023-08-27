@@ -26,7 +26,7 @@ $font-color: #44444f;
       font-weight: $font-weight;
       color: #ff6600;
       text-decoration: none;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       cursor: pointer;
 
       img {
@@ -52,6 +52,7 @@ $font-color: #44444f;
 
     .toTweet {
       height: 46px;
+      width: 85%;
       background-color: #ff6600;
       border-radius: 50px;
       display: flex;
