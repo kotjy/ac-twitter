@@ -49,7 +49,7 @@ const navigate = useNavigate();
 return (
   <div className={styles.container}>
      <div className={styles.topic}>
-      <p>推薦跟隨</p>
+      <p>Popular</p>
      </div>
      <div className= {styles.others}>
       {listItems}

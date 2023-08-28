@@ -13,7 +13,8 @@ export const MainProvider = ({children}) => {
     const [userData, setUserData] = useState();//使用者資料
     const [getTweet, setGetTweet] = useState([]);//取得點擊推文
     const [showReplymodal, setShowReplyModal] = useState(false);//回覆的視窗
-    
+    const [buttonStatus, setButtonStatus] = useState('推文')
+
     //以下為處理otherProfile的state 
     const [ otherUserData, setOtherUserData ] = useState([]);
     const [userTweets, setUserTweets] = useState([]);
@@ -51,8 +52,9 @@ export const MainProvider = ({children}) => {
     getTweet,
     setGetTweet,
     showReplymodal,
-    setShowReplyModal
-
+    setShowReplyModal,
+    buttonStatus,
+    setButtonStatus
    }   
  return <MainContext.Provider value ={value}>{children}</MainContext.Provider>
 }
