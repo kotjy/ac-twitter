@@ -10,7 +10,7 @@ const RegisterPage = () => {
     const [Email, setEmail]=useState('')
     const [Surepassword, setSurepassword]=useState('')
     return(
-        <container className={styles.Container}>
+        <div className={styles.Container}>
         
         <div>
         <AClogo/>
@@ -56,7 +56,7 @@ const RegisterPage = () => {
         <div>
         <u className={styles.LinkText}>取消</u>
         </div>
-      </container>
+      </div>
     )
     
     

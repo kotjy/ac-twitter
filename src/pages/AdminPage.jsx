@@ -10,7 +10,7 @@ const AdminPage = () => {
     
 
 return(
-    <container className={styles.Container}>
+    <div className={styles.Container}>
         
       <div>
       <AClogo/>
@@ -34,7 +34,7 @@ return(
       <div className={styles.LinkContainer}>
       <u className={styles.EndLinkText}>前台登入</u>
       </div>
-    </container>
+    </div>
 )
 
 
