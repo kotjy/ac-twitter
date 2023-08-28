@@ -1,4 +1,4 @@
-import styled from './followList.module.scss'
+import styled from './FollowList.module.scss'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AdminTweets } from '../AdminTweetList.jsx/AdminTweetList';
