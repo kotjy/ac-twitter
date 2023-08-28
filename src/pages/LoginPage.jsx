@@ -21,7 +21,7 @@ if(password.length === 0){
 const res = await login({account,password});
 console.log(res.data)
 console.log(res.status)
-if (res.status==='success') {
+if (res.status==='success') {     
     localStorage.setItem('token',res.data.token);
     Swal.fire({
       position:'top',
@@ -31,7 +31,7 @@ if (res.status==='success') {
       showConfirmButton: false,
     })
     return;    
-}else if(res.status!=='success'){
+}else{
     Swal.fire({
         position:'top',
         title:'登入失敗',

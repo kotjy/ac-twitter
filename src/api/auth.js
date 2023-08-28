@@ -4,10 +4,12 @@ const authUrl = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com/api'
 //登入
 export const login = async({account,password}) =>{
     try{
+     
     const {data} = await axios.post(`${authUrl}/users/signin`, {account,password});
-    return data
+      return { success: true, ...data }
     }catch(error){
-        console.error('[Login Failed]:', error)
+        console.error(error)
+        return { success: false};
     }
 }
 
