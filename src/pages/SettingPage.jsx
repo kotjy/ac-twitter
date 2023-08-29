@@ -61,8 +61,6 @@ const SettingPage = () => {
         </div>
         </div>
     )
-    
-    
     }
     
     export default SettingPage
