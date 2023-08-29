@@ -2,25 +2,40 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useEffect, useState } from 'react';
+import { signup } from '../api/auth';
 
-const RegisterPage = () => {
-    const [userName, setUserName]=useState('')
+const SignupPage = () => {
+    const [account, setaccount]=useState('')
     const [passWord, setpassWord]=useState('')
     const [Name, setName]=useState('')
     const [Email, setEmail]=useState('')
     const [Surepassword, setSurepassword]=useState('')
+
+   const handleClick = async () =>{
+      const signupElement = [account, Name, Email, passWord, Surepassword]
+
+      for(const element of signupElement){
+         if(element.length===0){
+            return
+         }
+      }
+
+      const { success, token } = await signup({
+      account, Name, Email, passWord, Surepassword});
+      console.log(success)
+      console.log(token)
+   }
+
     return(
         <div className={styles.Container}>
         
-        <div>
         <AClogo/>
-        </div>
         <h1>建立你的帳號</h1>
         <div className={styles.AuthInputContainer}>
            <AuthInput
            label="帳號"
-           value={userName}
-           onChange={(input)=>setUserName(input)} 
+           value={account}
+           onChange={(input)=>setaccount(input)} 
            />
         </div>
         <div className={styles.AuthInputContainer}>
@@ -51,7 +66,7 @@ const RegisterPage = () => {
            onChange={(input)=>setSurepassword(input)} 
            />
         </div>
-        <button className={styles.Authbutton}>註冊</button>
+        <button className={styles.Authbutton} onClick={handleClick}>註冊</button>
   
         <div>
         <u className={styles.LinkText}>取消</u>
@@ -62,4 +77,4 @@ const RegisterPage = () => {
     
     }
     
-    export default RegisterPage
+    export default SignupPage
