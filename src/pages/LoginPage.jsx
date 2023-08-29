@@ -2,27 +2,40 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 import Swal from 'sweetalert2';
 
 const LoginPage = () => {
 const [account, setAccount]=useState('')
 const [password, setpassWord]=useState('')
+const navigate = useNavigate();
 
-const handleClick = async ()=> {
+const handleClick = async (e)=> {
+  e.preventDefault();
 if(account.length === 0){
+    alert('請輸入帳號！')
     return;
 }
-if(password.length === 0){
+if(account.length > 50){
+  alert('帳號字數不可超過 50 字!')
     return;
 }
+if (password === '') {
+			alert('請輸入密碼!');
+			return;
+		}
  
-const res = await login({account,password});
-console.log(res.data)
-console.log(res.status)
-if (res.status==='success') {     
-    localStorage.setItem('token',res.data.token);
+const  {success, token, data } = 
+await login({account,password});
+
+
+if (success) {     
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', data.user.id);
+    
+
+
     Swal.fire({
       position:'top',
       title:'登入成功',
@@ -30,6 +43,7 @@ if (res.status==='success') {
       icon: 'success',
       showConfirmButton: false,
     })
+    navigate('/main')
     return;    
 }else{
     Swal.fire({
