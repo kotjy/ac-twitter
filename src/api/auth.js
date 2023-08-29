@@ -14,17 +14,13 @@ export const login = async({account,password}) =>{
 }
 
 //註冊
-export const signup = async({account,name,email, password,checkPassword}) =>{
+export const signup = async({account, name, email, password, checkPassword}) =>{
 try{
  const {data} = await axios.post(`${authUrl}`, 
  {account,name,email, password,checkPassword});
- const { authToken } = data;
-
- if (authToken) {
-    return { success: true, ...data };
-  }
-
+  return { success: true, ...data };
 }catch(error){
-    console.error('[Signup Failed]:', error) 
+    console.error('[Signup Failed]:', error)
+    return { success: false}; 
 }
 }
