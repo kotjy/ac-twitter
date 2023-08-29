@@ -32,10 +32,7 @@ console.log(data)
 
 if (success) {     
     localStorage.setItem('token', data.token);
-    localStorage.setItem('userId', data.user.id);
-    
-
-
+    localStorage.setItem('userId', data.user.id);    
     Swal.fire({
       position:'top',
       title:'登入成功',

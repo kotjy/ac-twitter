@@ -2,8 +2,10 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useEffect, useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth';
 import Swal from 'sweetalert2';
+
 
 const SignupPage = () => {
     const [account, setaccount]=useState('')
@@ -11,6 +13,8 @@ const SignupPage = () => {
     const [name, setname]=useState('')
     const [email, setemail]=useState('')
     const [checkPassword, setcheckPassword]=useState('')
+    const navigate = useNavigate();
+
 
    const handleClick = async (e) =>{
       e.preventDefault();
@@ -35,6 +39,7 @@ const SignupPage = () => {
            icon: 'success',
            showConfirmButton: false,
          });
+         navigate('/login')
          return;
        }
        Swal.fire({
