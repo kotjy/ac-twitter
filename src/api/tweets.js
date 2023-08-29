@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const baseURL = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com'
+const baseURL = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com/api'
 
 
 // 新增推文
-export const postTweet = async (description, authToken) => {
+export const postTweet = async (description, token) => {
 	try {
 		const res = await axios.post(
-			`${baseURL}/api/tweets`,
+			`${baseURL}/tweets`,
 			{ description },
 			{
 				headers: {
-					Authorization: 'Bearer ' + authToken,
+					Authorization: 'Bearer ' + token,
 				},
 			},
 		);
@@ -22,11 +22,11 @@ export const postTweet = async (description, authToken) => {
 };
 
 // 取得所有貼文
-export const getTweets = async (authToken) => {
+export const getTweets = async (token) => {
 	try {
-		const res = await axios.get(`${baseURL}/api/tweets`, {
+		const res = await axios.get(`${baseURL}/tweets`, {
 			headers: {
-				Authorization: 'Bearer ' + authToken,
+				Authorization: 'Bearer ' + token,
 			},
 		});
 		return res.data;
@@ -36,11 +36,11 @@ export const getTweets = async (authToken) => {
 };
 
 // 取得個別推文
-export const getIdTweets = async (authToken, tweetId) => {
+export const getIdTweets = async (token, tweetId) => {
 	try {
-		const res = await axios.get(`${baseURL}/api/tweets/${tweetId}`, {
+		const res = await axios.get(`${baseURL}/tweets/${tweetId}`, {
 			headers: {
-				Authorization: 'Bearer ' + authToken,
+				Authorization: 'Bearer ' + token,
 			},
 		});
 		return res.data;

@@ -32,7 +32,8 @@ function SideBar ({onToTweetClick}) {
   //logout
   const handleLogout = (e) => {
     e.preventDefault();
-    //補充api //登出
+    localStorage.removeItem('token');
+		localStorage.removeItem('userId');
 
      Navigate('/login')
   }
