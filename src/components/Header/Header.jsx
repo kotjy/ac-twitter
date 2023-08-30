@@ -2,11 +2,13 @@ import { useMainFunction } from "../../contexts/MainContext";
 import { Link } from 'react-router-dom'
 import leftArrow from '../../assets/left-arrow.svg'
 import styles from './Header.module.scss'
+
+
 //需要補充畫面驗證
 
 function Header () {
   const { otherUserData,
-          setOtherUserData,
+          OtherUserTweets,
           activeSection, 
           setActiveSection } = useMainFunction();
   
@@ -23,7 +25,8 @@ function Header () {
     setActiveSection('main')
   }
 
- //需要補充畫面驗證 userData userTweet.length
+ const { userData, userTweets } = useMainFunction();
+
   
  return (
    <div className ={styles.container}> 
@@ -58,8 +61,8 @@ function Header () {
     activeSection === 'following' ? (
       <Link className={styles.content} to = ''>
         <div className= {styles.userTitleWrap}>
-          <span>{otherUserData?.name}</span> 
-          <span className={styles.tweetText}> 推文</span> 
+          <span>{userData?.name}</span> 
+          <span className={styles.tweetText}> {userTweets?.length}推文</span> 
         </div>
       </Link>
     ): (''
@@ -69,7 +72,7 @@ function Header () {
 				<Link className={styles.content} to=''>
 					<div className={styles.userTitleWrap}>
 						<span>{otherUserData?.name}</span>
-						<span className={styles.tweetText}> 推文</span>
+						<span className={styles.tweetText}> {OtherUserTweets?.length}推文</span>
 					</div>
 				</Link>
 			)}

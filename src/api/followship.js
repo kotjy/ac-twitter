@@ -29,3 +29,17 @@ export const deleteFollow = async (token, followingId) => {
 		console.error('[Delete Follow failed]: ', error.response.data);
 	}
 };
+
+// 推薦跟隨名單
+export const recommendedFollowList = async (token) => {
+	try {
+		const res = await axios.get(`${baseURL}/followships/top`, {
+			headers: {
+				Authorization: 'Bearer ' + token,
+			},
+		});
+		return res.data.topUsers;
+	} catch (error) {
+		console.error('[Get Recommended FollowList failed]: ', error.response.data);
+	}
+};

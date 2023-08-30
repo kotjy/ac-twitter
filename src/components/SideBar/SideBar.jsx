@@ -13,7 +13,8 @@ import { useNavigate } from 'react-router-dom'
 
 function SideBar ({onToTweetClick}) {
  const {activeSection,setActiveSection} =useMainFunction();
- 
+ const navigate = useNavigate();
+
   const handleChangeMain = (e) => {
     e.preventDefault();
     setActiveSection('main');
@@ -35,7 +36,7 @@ function SideBar ({onToTweetClick}) {
     localStorage.removeItem('token');
 		localStorage.removeItem('userId');
 
-     Navigate('/login')
+     navigate('/login')
   }
 
 

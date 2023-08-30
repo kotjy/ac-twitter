@@ -131,6 +131,11 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 			return;
 		}
 
+		const authToken = localStorage.getItem('token');
+		const userId = localStorage.getItem('userId');
+
+    
+
   }
 			
 

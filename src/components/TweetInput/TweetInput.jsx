@@ -1,15 +1,16 @@
 import styles from './TweetInput.module.scss'
 import fakeAvatar from '../../assets/fake-avatar.svg'
-import {useMainFunction} from '../../contexts/MainContext'
 
-function TweetInput ({onToTweetClick, onOtherClick}) {
- const { useData } = useMainFunction();
+
+
+function TweetInput ({onToTweetClick, onOtherClick, userData}) {
+ 
 
  return(
   <div className={styles.selfTweetSection}>
     <div className={styles.section}>
       <div className={styles.img} onClick={onOtherClick}>
-        <img src={ useData?.avatar  ||  fakeAvatar }/>
+        <img src={ userData?.avatar  ||  fakeAvatar }/>
       </div>
 
       <div className={styles.toTweetModal} onClick={onToTweetClick}>

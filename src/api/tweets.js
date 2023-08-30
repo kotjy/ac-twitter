@@ -36,9 +36,9 @@ export const getTweets = async (token) => {
 };
 
 // 取得個別推文
-export const getIdTweets = async (token, tweetId) => {
+export const getIdTweets = async (token, tweetID) => {
 	try {
-		const res = await axios.get(`${baseURL}/tweets/${tweetId}`, {
+		const res = await axios.get(`${baseURL}/tweets/${tweetID}`, {
 			headers: {
 				Authorization: 'Bearer ' + token,
 			},

@@ -31,7 +31,7 @@ await login({account,password});
 
 
 if (success) {     
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.user.id);
     
 
