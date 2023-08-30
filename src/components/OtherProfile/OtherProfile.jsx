@@ -87,7 +87,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
 
      <div className={styled.userinfo}>
       <span className={styled.title}> {userData?.name} </span>
-       <span className={styled.account}> {userData?.account} </span>
+       <span className={styled.account}> @{userData?.account} </span>
 
        <span>{userData?.introduction}</span>
      </div>

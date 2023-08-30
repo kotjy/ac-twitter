@@ -9,6 +9,7 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
   const { userData } = useMainFunction();
   const account = userData?.User?.account
   
+  //avatar待修正
 
   return(
     <div className={styles.container}>
@@ -19,10 +20,10 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
              <img src={IconX} />
           </div>
         </div>
-
+         
         <div className={styles.tweetSection}>
           <Link className={styles.avatar} to={`/${account}`}>
-            <img src={author?.User.avatar || fakeAvatar} />
+            <img src={ author?.User?.avatar ||fakeAvatar} /> 
             <div className={styles.line}></div>
           </Link>
           <div className={styles.infoSection}>
@@ -54,7 +55,8 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
             <span>{prompts}</span>
             <div className={styles.warnning}>內容不可空白</div>
             <button
-             className={styles.replyButton} onClick={onReplyClick}> 
+             className={styles.replyButton} 
+             onClick={()=> { onReplyClick(author?.id)}}> 
               回覆
              </button>
           </div>
