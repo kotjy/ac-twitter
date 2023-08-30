@@ -26,16 +26,13 @@ if (password === '') {
 			return;
 		}
  
-const  {success, token, data } = 
+const  {success, data } = 
 await login({account,password});
-
+console.log(data)
 
 if (success) {     
-    localStorage.setItem('token', token);
-    localStorage.setItem('userId', data.user.id);
-    
-
-
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.user.id);    
     Swal.fire({
       position:'top',
       title:'登入成功',
@@ -71,14 +68,15 @@ return (
       </div>
       <div className={styles.AuthInputContainer}>
          <AuthInput
+         type = 'password'
          label="密碼"
          value={password}
          onChange={(input)=>setpassWord(input)} 
          />
       </div>
-      {/* <Link to='/main' className={styles.LinkStyle}> */}
+     
       <button className={styles.Authbutton} onClick={handleClick}>登入</button>
-      {/* </Link> */}
+     
       <div className={styles.LinkContainer}>
       <u className={styles.LinkText}>註冊 Alphitter</u>
       <span className={styles.LinkText}>.</span>
