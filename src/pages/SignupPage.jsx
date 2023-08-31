@@ -28,9 +28,8 @@ const SignupPage = () => {
 
       const { success, data } = await signup({
       account, name, email, password, checkPassword});
-      console.log(data)
-      console.log(success)
-      if (success) {
+
+      if (success && password===checkPassword) {
          localStorage.setItem('data', data);
          Swal.fire({
            position: 'top',
