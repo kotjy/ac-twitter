@@ -8,13 +8,19 @@ import { FollowButton } from '../FollowList/FollowList';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-//api
+import { deleteTweets, getAllTweets } from '../../api/admin';
 
 export function XButton({ img, tweetId, setAllTweets }) {
-	
+	const handleDeleteTweet = async () => {
+		const authToken = localStorage.getItem('adminAuthToken');
+		await deleteTweets(tweetId, authToken);
+
+		const result = await getAllTweets(authToken);
+		setAllTweets(result);
+	};
 
 	return (
-		<button className={styled.button}>
+		<button className={styled.button} onClick={handleDeleteTweet}>
 			{img}
 		</button>
 	);
@@ -42,8 +48,8 @@ export function AdminTweets({
 								className={styled.logo}
 								src={
 									activeSection === 'following' || activeSection === 'follower'
-										? tweet.avatar
-										: tweet.User.avatar
+										? tweet?.avatar
+										: tweet?.User?.avatar
 								}
 								alt=''
 							/>
@@ -57,15 +63,15 @@ export function AdminTweets({
 										{activeSection === 'following' ||
 										activeSection === 'follower' ||
 										activeComponent === 'tweets'
-											? tweet.name
-											: tweet.User.name}
+											? tweet?.name
+											: tweet?.User?.name}
 									</span>
 									{/* 追隨者、正在追隨不顯示 */}
 
 									<span className={styled.userTime}>
 										{activeSection === 'following' || activeSection === 'follower'
 											? ''
-											: `@ ${tweet.User.account}・${tweet.period}`}
+											: `@ ${tweet?.User?.account}・${tweet?.createdAt}`}
 									</span>
 								</div>
 								{/* 追隨按鈕、後台刪除推文按鈕 */}
@@ -93,7 +99,7 @@ export function AdminTweets({
 								<div className={styled.replyAccWrap}>
 									<span className={styled.text}>回覆</span>
 									<span className={styled.account}>
-										{buttonStatus === '回覆' ? `@${tweet.Tweet.User.account}` : ''}
+										{buttonStatus === '回覆' ? `@${tweet?.Tweet?.User?.account}` : ''}
 									</span>
 								</div>
 							)}
@@ -102,11 +108,11 @@ export function AdminTweets({
 							<div className={styled.tweetWrap}>
 								{(buttonStatus === '推文' ||
 									buttonStatus === '喜歡的內容' ||
-									activeComponent === 'tweets') && <span>{tweet.description}</span>}
-								{buttonStatus === '回覆' && <span>{tweet.comment}</span>}
+									activeComponent === 'tweets') && <span>{tweet?.description}</span>}
+								{buttonStatus === '回覆' && <span>{tweet?.comment}</span>}
 
 								{(activeSection === 'followed' || activeSection === 'following') && (
-									<span>{tweet.introduction}</span>
+									<span>{tweet?.introduction}</span>
 								)}
 							</div>
 
@@ -118,13 +124,13 @@ export function AdminTweets({
 											<img src={reply} alt='' />
 										</div>
 										<div>
-											<span>{tweet.replyCounts}</span>
+											<span>{tweet?.replyCounts}</span>
 										</div>
 									</div>
 
 									<div className={styled.replyWrap}>
 										<img src={buttonStatus === '喜歡的內容' ? redLike : like} alt='' />
-										{tweet.likeCounts}
+										{tweet?.likeCounts}
 									</div>
 								</div>
 							)}
@@ -140,7 +146,25 @@ function AdminTweetList({ activeComponent, tweetId }) {
 	const navigate = useNavigate();
 	const [allTweets, setAllTweets] = useState([]);
 
+useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const authToken = localStorage.getItem('adminAuthToken');
 
+				if (!authToken) {
+					navigate('/admin');
+					return;
+				}
+
+				const result = await getAllTweets(authToken);
+				console.log(result);
+				setAllTweets(result);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchUserData();
+	}, []);
 
 	return (
 		<div className={styled.tweetCon}>

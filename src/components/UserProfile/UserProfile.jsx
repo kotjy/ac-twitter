@@ -11,7 +11,9 @@ import Swal from 'sweetalert2'
 import { useMainFunction } from '../../contexts/MainContext'
 import { useRef } from 'react'
 import { AdminTweets } from '../AdminTweetList.jsx/AdminTweetList';
-import { getUserData } from '../../api/userProfile';
+import { getUserData, getEditPersonal, getUserLikeTweets, getUserReplyTweets,getUserTweets } from '../../api/userProfile';
+
+
 
 export function StatusButton({ buttonStatus, setButtonStatus }) {
 	const handleTweetClick = (e) => {
@@ -65,7 +67,7 @@ export function StatusButton({ buttonStatus, setButtonStatus }) {
 function ReactModal({ modalIsOpen, setModalIsOpen }) {
 
 	const { userData } = useMainFunction();
-	const [name, setName] = useState(`${userData.name}`);
+	const [name, setName] = useState(`${userData?.name}`);
 	const [nameLength, setNameLength] = useState(0);
 	const [intro, setIntro] = useState('');
 	const [introLength, setIntroLength] = useState(0);
@@ -134,8 +136,39 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 		const authToken = localStorage.getItem('token');
 		const userId = localStorage.getItem('userId');
 
-    
+    // 修改個人資料
+		const response = await getEditPersonal(userId, authToken, name, avatar, cover, intro);
 
+		if (response) {
+			// 修改成功訊息
+			Swal.fire({
+				position: 'top',
+				title: '修改成功！',
+				timer: 1000,
+				icon: 'success',
+				showConfirmButton: false,
+			});
+
+			setIntro('');
+			setIntroLength(0);
+			// 個人資料
+			const data = await getUserData(userId, authToken);
+			setUserData(data);
+
+			// 編輯個人資料畫面更新
+			setName(data.name);
+
+			setModalIsOpen(false);
+			return;
+		}
+    // 修改失敗訊息
+		Swal.fire({
+			position: 'top',
+			title: '修改失敗！',
+			timer: 1000,
+			icon: 'error',
+			showConfirmButton: false,
+		});
   }
 			
 
@@ -147,7 +180,7 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 			overlayClassName={styled.overlay}
 			className={styled.modal}
 		>
-			{/* 添加您希望顯示的內容 */}
+			
 			<div>
 				{/* header */}
 				<div className={styled.header}>
@@ -168,7 +201,7 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 
 				{/* backImg */}
 				<div className={styled.backImgWrap}>
-					<img src={userData.cover || fakeBack} alt='' className={styled.backImg} />
+					<img src={userData?.cover || fakeBack} alt='' className={styled.backImg} />
 
 					<div className={styled.cameraWrap}>
 						<form action='' onSubmit={handleSubmit}>
@@ -199,7 +232,7 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 
 				{/* avatar img */}
 				<div className={styled.avatarWrap}>
-					<img src={userData.avatar || fakePhoto} alt='' className={styled.avatarImg} />
+					<img src={userData?.avatar || fakePhoto} alt='' className={styled.avatarImg} />
 
 					<div className={styled.cameraButtonWrap}>
 						<form action='' onSubmit={handleSubmit}>
@@ -246,7 +279,7 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 
 					<form className={styled.form2}>
 						<label htmlFor=''>自我介紹</label>
-						<span className={styled.intro}>{userData.introduction}</span>
+						<span className={styled.intro}>{userData?.introduction}</span>
 						<input
 							type='text'
 							value={intro}
@@ -282,11 +315,11 @@ export function UserContent({
 		<>
 			<div className={styled.imgWrap}>
 				<div>
-					<img src={userData.cover ||fakeBack} alt='' className={styled.cover} />
+					<img src={userData?.banner ||fakeBack} alt='' className={styled.cover} />
 				</div>
 
 				<div className={styled.avatarCon}>
-					<img src={userData.avatar || fakePhoto} alt='' className={styled.avatar} />
+					<img src={userData?.avatar || fakePhoto} alt='' className={styled.avatar} />
 				</div>
 			</div>
 
@@ -308,10 +341,10 @@ export function UserContent({
 				)}
 
 				<div className={styled.userInfo}>
-					<span className={styled.title}>{userData.name}</span>
-					<span className={styled.account}>@{userData.account}</span>
+					<span className={styled.title}>{userData?.name}</span>
+					<span className={styled.account}>@{userData?.account}</span>
 
-					<span>{userData.introduction}</span>
+					<span>{userData?.introduction}</span>
 				</div>
 
 				<div className={styled.buttonWrap}>
@@ -320,7 +353,7 @@ export function UserContent({
 							className={styled.followButton}
 							onClick={activeSection === 'userProfile' && handleFollowingClick}
 						>
-							<span>{userData.followingCounts} 個</span>
+							<span>{userData?.followingCounts} 個</span>
 							<span className={styled.followTitle}>跟隨中</span>
 						</button>
 					</div>
@@ -330,7 +363,7 @@ export function UserContent({
 							className={styled.followButton}
 							onClick={activeSection === 'userProfile' && handleFollowerClick}
 						>
-							<span>{userData.followerCounts} 位</span>
+							<span>{userData?.followerCounts} 位</span>
 							<span className={styled.followTitle}>跟隨者</span>
 						</button>
 					</div>
@@ -375,7 +408,37 @@ function UserProfile({ activeSection, setActiveSection }) {
 		setActiveSection('following');
 	};
 
-	// 獲取使用者個人資料
+	// 拿到使用者個人資料
+	useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const authToken = localStorage.getItem('token');
+				const userId = localStorage.getItem('userId');
+				if (!authToken) {
+					navigate('/login');
+					return;
+				}
+				// 個人資料
+				const data = await getUserData(userId, authToken);
+				setUserData(data);
+
+				// 個人推文
+				const tweets = await getUserTweets(userId, authToken);
+				setUserTweets(tweets);
+
+				// 個人回覆推文
+				const replyTweets = await getUserReplyTweets(userId, authToken);
+				setUserReplyTweets(replyTweets);
+
+				// 個人喜歡推文
+				const likeTweets = await getUserLikeTweets(userId, authToken);
+				setUserLikeTweets(likeTweets);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchUserData();
+	}, []);
 	
 	return (
 		<div className={styled.wrap}>

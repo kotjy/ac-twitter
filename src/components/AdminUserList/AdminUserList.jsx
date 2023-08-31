@@ -5,7 +5,8 @@ import feather from '../../assets/feather.svg'
 import heart from '../../assets/heart.svg'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { getAllUsers } from '../../api/admin'
+import { useEffect } from 'react'
 
 
 function UserCard({ allUserData }) {
@@ -29,12 +30,12 @@ function UserCard({ allUserData }) {
 					<div className={styled.likeCon}>
 						<div className={styled.likeWrap}>
 							<img src={feather} alt='' />
-							<span>{user.tweetCounts}</span>
+							<span>{user?.tweetCounts}</span>
 						</div>
 
 						<div className={styled.likeWrap}>
 							<img src={heart} alt='' />
-							<span>{user.beLikedCounts}</span>
+							<span>{user?.beLikedCounts}</span>
 						</div>
 					</div>
 
@@ -60,7 +61,25 @@ function AdminUserList() {
 	const [allUsers, setAllUsers] = useState([]);
 	const navigate = useNavigate();
 
-	//api
+	useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const authToken = localStorage.getItem('adminAuthToken');
+
+				if (!authToken) {
+					navigate('/admin');
+					return;
+				}
+
+				const result = await getAllUsers(authToken);
+				setAllUsers(result);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchUserData();
+	}, []);
+
 
 	return (
 		<div className={styled.listCon}>

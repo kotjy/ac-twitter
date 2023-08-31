@@ -8,7 +8,7 @@ import { useMainFunction } from "../../contexts/MainContext";
 import { getIdTweets, getTweets, postTweet  } from "../../api/tweets";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { getUserData, getUserTweets, getUserReplyTweets, getUserLikeTweets, getFollowingList, getFollowedList } from "../../api/userProfile";
+import { getUserData, getUserTweets, getUserReplyTweets, getUserLikeTweets, getFollowingList } from "../../api/userProfile";
 import { useEffect } from "react";
 import { postFollow, deleteFollow,  } from "../../api/followship";
 import { postReply, getAllReply } from "../../api/reply";
@@ -47,8 +47,6 @@ const {
     setGetTweet,
     showReplyModal,
     setShowReplyModal,
-    buttonStatus,
-    setButtonStatus,
 	  replyText,
     setReplyText} = useMainFunction();
 
