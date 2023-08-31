@@ -30,7 +30,7 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
             <div className={styles.nameSection}>
               <div className={styles.nickname}> {author?.User?.name}</div>
               <div className={styles.accountAndPeriod}>
-                @{author?.user?.account}．{author?.period}
+                @{author?.User?.account}．{author?.createdAt}
               </div>
             </div>
           <div className={styles.contentSection}>{author?.description} </div>

@@ -3,9 +3,10 @@ import axios from "axios";
 const baseURL = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com/api'
 
 // 新增追蹤
-export const postFollow = async (token) => {
+export const postFollow = async (token, id) => {
 	try {
-		const res = await axios.post(`${baseURL}/followships`, {
+		const res = await axios.post(`${baseURL}/followships`,
+		{ id }, {
 			headers: {
 				Authorization: 'Bearer ' + token,
 			},
@@ -38,7 +39,7 @@ export const recommendedFollowList = async (token) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
-		return res.data.topUsers;
+		return res.data;
 	} catch (error) {
 		console.error('[Get Recommended FollowList failed]: ', error.response.data);
 	}

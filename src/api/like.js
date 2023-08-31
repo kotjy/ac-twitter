@@ -5,13 +5,15 @@ const baseURL = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com/api'
 // 將推文加入喜歡
 export const postLike = async (token, itemID) => {
 	try {
-		const res = await axios.post(`${baseURL}/tweets/${itemID}/like`, null, {
-			headers: {
-				ContentType: 'application/json',
+		const res = await fetch(`${baseURL}/tweets/${itemID}/like`, {method: 'POST',
+	   headers: {
+			  ContentType:'application/json',
 				Authorization: 'Bearer ' + token,
 			},
+			
 		});
-		return res.data;
+		const data = await res.json();
+		return data;
 	} catch (error) {
 		console.error('[Post Like failed]: ', error.response.data);
 	}

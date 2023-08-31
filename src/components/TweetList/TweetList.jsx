@@ -36,7 +36,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 				<div
 					className={styles.contentSection}
 					onClick={() => {
-						onTweetClick(item?.User?.id);
+						onTweetClick(item?.id);
 					}}
 				>
 					{item?.description}
@@ -45,7 +45,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 					<div
 						className={styles.counter}
 						onClick={() => {
-							onReplyClick(item?.User?.id);
+							onReplyClick(item?.id);
 						}}
 					>
 						<img src={replyIcon} />
@@ -54,7 +54,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 					<button
 						className={styles.counter}
 						onClick={() => {
-							onLikeClick(item?.User?.id);
+							onLikeClick(item?.id);
 						}}
 					>
 						{item?.isLiked ? <img src={redLikeIcon} /> : <img src={likeIcon} />}

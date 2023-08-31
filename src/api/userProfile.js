@@ -91,4 +91,24 @@ export const getFollowedList = async (userId, token) => {
 	}
 };
 
-//編輯個人資料
+// 編輯個人資料
+export const getEditPersonal = async (userId, token, name, avatar, cover, introduction) => {
+	try {
+		const formData = new FormData();
+		formData.append('name', name);
+		formData.append('avatar', avatar);
+		formData.append('cover', cover);
+		formData.append('introduction', introduction);
+
+		const response = await axios.put(`${authURL}/users/${userId}`, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+				Authorization: 'Bearer ' + token,
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.error(`Error fetching edit personal for user ${userId}: ${error}`);
+	}
+};
