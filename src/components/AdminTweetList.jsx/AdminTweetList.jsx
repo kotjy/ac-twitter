@@ -101,7 +101,7 @@ export function AdminTweets({
 								<div className={styled.replyAccWrap}>
 									<span className={styled.text}>回覆</span>
 									<span className={styled.account}>
-										{buttonStatus === '回覆' ? `@${tweet?.Tweet?.User?.account}` : ''}
+										{buttonStatus === '回覆' ? `@${tweet?.User?.account}` : ''}
 									</span>
 								</div>
 							)}
