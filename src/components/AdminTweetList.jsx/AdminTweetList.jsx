@@ -12,7 +12,7 @@ import { deleteTweets, getAllTweets } from '../../api/admin';
 
 export function XButton({ img, tweetId, setAllTweets }) {
 	const handleDeleteTweet = async () => {
-		const authToken = localStorage.getItem('adminAuthToken');
+		const authToken = localStorage.getItem('token');
 		await deleteTweets(tweetId, authToken);
 
 		const result = await getAllTweets(authToken);
@@ -38,6 +38,7 @@ export function AdminTweets({
 	setFollowedList,
 }) {
 	return (
+	
 		// 用 map 渲染
 		userTweets.map((tweet) => {
 			return (
@@ -46,6 +47,7 @@ export function AdminTweets({
 						<div className={styled.logoWrap}>
 							<img
 								className={styled.logo}
+							
 								src={
 									activeSection === 'following' || activeSection === 'follower'
 										? tweet?.avatar
@@ -145,11 +147,11 @@ export function AdminTweets({
 function AdminTweetList({ activeComponent, tweetId }) {
 	const navigate = useNavigate();
 	const [allTweets, setAllTweets] = useState([]);
-
+console.log(allTweets);
 useEffect(() => {
 		const fetchUserData = async () => {
 			try {
-				const authToken = localStorage.getItem('adminAuthToken');
+				const authToken = localStorage.getItem('token');
 
 				if (!authToken) {
 					navigate('/admin');

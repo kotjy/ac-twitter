@@ -3,19 +3,18 @@ import axios from "axios";
 const baseURL = 'https://quiet-brook-57490-c9dd61813879.herokuapp.com/api'
 
 // 將推文加入喜歡
-export const postLike = async (token, itemID) => {
+export const postLike = async (token, id) => {
 	try {
-		const res = await fetch(`${baseURL}/tweets/${itemID}/like`, {method: 'POST',
-	   headers: {
-			  ContentType:'application/json',
+		const res = await axios.post(`${baseURL}/tweets/${id}/like`, null, {
+			headers: {
 				Authorization: 'Bearer ' + token,
 			},
-			
 		});
-		const data = await res.json();
-		return data;
+		console.log(res);
+		return res.data;
 	} catch (error) {
-		console.error('[Post Like failed]: ', error.response.data);
+		console.error('[Post Unlike failed]: ', error.response.data);
+		console.log(error);
 	}
 };
 
@@ -27,6 +26,7 @@ export const postUnlike = async (token, id) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
+		console.log(res);
 		return res.data;
 	} catch (error) {
 		console.error('[Post Unlike failed]: ', error.response.data);

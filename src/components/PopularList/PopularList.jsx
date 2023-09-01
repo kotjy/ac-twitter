@@ -19,10 +19,11 @@ const navigate = useNavigate();
 				return;
 			}
 			const userId = id;
+			console.log(authToken);
 			if (populars.some((popular) => popular.id === id && popular.isFollowed)) {
-				await deleteFollow(userId, authToken);
+				await deleteFollow(authToken, userId);
 			} else {
-				await postFollow(userId, authToken);
+				await postFollow(authToken, userId);
 			}
 
 			setPopulars((prevPopulars) => {

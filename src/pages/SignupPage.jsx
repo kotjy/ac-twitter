@@ -52,7 +52,7 @@ const SignupPage = () => {
    
 
     return(
-        <div className={styles.Container}>
+        <div className={styles.container}>
         
         <AClogo/>
         <h1>建立你的帳號</h1>

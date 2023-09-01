@@ -59,7 +59,7 @@ if (success) {
 
 
 return (
-    <div className={styles.Container}>
+    <div className={styles.container}>
       <AClogo/>
       <h1>登入 Alphitter</h1>
       <div className={styles.AuthInputContainer}>

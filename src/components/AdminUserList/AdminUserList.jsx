@@ -64,7 +64,7 @@ function AdminUserList() {
 	useEffect(() => {
 		const fetchUserData = async () => {
 			try {
-				const authToken = localStorage.getItem('adminAuthToken');
+				const authToken = localStorage.getItem('token');
 
 				if (!authToken) {
 					navigate('/admin');

@@ -64,243 +64,6 @@ export function StatusButton({ buttonStatus, setButtonStatus }) {
 }
 
 
-function ReactModal({ modalIsOpen, setModalIsOpen }) {
-
-	const { userData } = useMainFunction();
-	const [name, setName] = useState(`${userData?.name}`);
-	const [nameLength, setNameLength] = useState(0);
-	const [intro, setIntro] = useState('');
-	const [introLength, setIntroLength] = useState(0);
-	const [avatar, setAvatar] = useState(null);
-	const [cover, setCover] = useState(null);
-	const coverInputRef = useRef(null);
-	const avatarInputRef = useRef(null);
-	const { setUserData } = useMainFunction();
-
-	const handleResetName = () => {
-		setName('');
-	};
-
-	const handleNameChange = (e) => {
-		e.preventDefault();
-		const inputValue = e.target.value;
-		const inputNoSpace = inputValue.replace(/\s+/g, '');
-		const inputLength = inputNoSpace.length;
-		setName(inputValue);
-		setNameLength(inputLength);
-	};
-
-	const handleIntroChange = (e) => {
-		e.preventDefault();
-		const inputValue = e.target.value;
-		const inputNoSpace = inputValue.replace(/\s+/g, '');
-		const inputLength = inputNoSpace.length;
-		setIntro(inputValue);
-		setIntroLength(inputLength);
-	};
-
-	// 阻擋預設行為
-	const handleSubmit = (event) => {
-		event.preventDefault();
-	};
-
-	// 大頭照上傳
-	const handleAvatarChange = (e) => {
-		e.preventDefault();
-		setAvatar(e.target.files[0]);
-	};
-
-	// 背景圖上傳
-	const handleCoverChange = (e) => {
-		e.preventDefault();
-		setCover(e.target.files[0]);
-	};
-
-	// 儲存按鈕事件
-	const handleSaveClick = async (e) => {
-		e.preventDefault();
-		if (nameLength > 50) {
-			alert('名稱字數不可超過 50 字!');
-			return;
-		} else if (introLength > 160) {
-			alert('自我介紹數字不可超過 160 字!');
-			return;
-		} else if (nameLength === 0) {
-			alert('請輸入名稱!');
-			return;
-		} else if (introLength === 0) {
-			alert('請輸入自我介紹!');
-			return;
-		}
-
-		const authToken = localStorage.getItem('token');
-		const userId = localStorage.getItem('userId');
-
-    // 修改個人資料
-		const response = await getEditPersonal(userId, authToken, name, avatar, cover, intro);
-
-		if (response) {
-			// 修改成功訊息
-			Swal.fire({
-				position: 'top',
-				title: '修改成功！',
-				timer: 1000,
-				icon: 'success',
-				showConfirmButton: false,
-			});
-
-			setIntro('');
-			setIntroLength(0);
-			// 個人資料
-			const data = await getUserData(userId, authToken);
-			setUserData(data);
-
-			// 編輯個人資料畫面更新
-			setName(data.name);
-
-			setModalIsOpen(false);
-			return;
-		}
-    // 修改失敗訊息
-		Swal.fire({
-			position: 'top',
-			title: '修改失敗！',
-			timer: 1000,
-			icon: 'error',
-			showConfirmButton: false,
-		});
-  }
-			
-
-	return (
-		<Modal
-			isOpen={modalIsOpen}
-			onRequestClose={() => setModalIsOpen(false)}
-			ariaHideApp={false}
-			overlayClassName={styled.overlay}
-			className={styled.modal}
-		>
-			
-			<div>
-				{/* header */}
-				<div className={styled.header}>
-					<div className={styled.xButtonWrap}>
-						<button className={styled.xButton}>
-							<XLogo className={styled.xLogo} onClick={() => setModalIsOpen(false)} />
-						</button>
-
-						<span className={styled.headerTitle}>編輯個人資料</span>
-					</div>
-
-					<div>
-						<button className={styled.saveButton} onClick={handleSaveClick}>
-							儲存
-						</button>
-					</div>
-				</div>
-
-				{/* backImg */}
-				<div className={styled.backImgWrap}>
-					<img src={userData?.cover || fakeBack} alt='' className={styled.backImg} />
-
-					<div className={styled.cameraWrap}>
-						<form action='' onSubmit={handleSubmit}>
-							<button
-								type='submit'
-								className={styled.button}
-								onClick={() => {
-									coverInputRef.current.click();
-								}}
-							>
-								<img src={camera} alt='' />
-							</button>
-							<input
-								className={styled.cameraButton2}
-								type='file'
-								id='upload'
-								ref={coverInputRef}
-								hidden
-								onChange={handleCoverChange}
-							/>
-						</form>
-
-						<button className={styled.button}>
-							<XLogo className={styled.xLogo} onClick={() => setModalIsOpen(false)} />
-						</button>
-					</div>
-				</div>
-
-				{/* avatar img */}
-				<div className={styled.avatarWrap}>
-					<img src={userData?.avatar || fakePhoto} alt='' className={styled.avatarImg} />
-
-					<div className={styled.cameraButtonWrap}>
-						<form action='' onSubmit={handleSubmit}>
-							<button
-								type='submit'
-								className={styled.cameraButton}
-								onClick={() => {
-									avatarInputRef.current.click();
-								}}
-							>
-								<img src={camera} alt='' />
-							</button>
-							<input
-								type='file'
-								id='upload2'
-								ref={avatarInputRef}
-								hidden
-								onChange={handleAvatarChange}
-							/>
-						</form>
-					</div>
-				</div>
-
-				{/* 名稱、自我介紹 */}
-				<div className={styled.inputWrap}>
-					<form className={styled.form}>
-						<label htmlFor=''>名稱</label>
-						<input
-							type='text'
-							value={name}
-							className={styled.input}
-							onChange={handleNameChange}
-							onClick={handleResetName}
-						/>
-
-						{/* 字數處理 */}
-						<div className={styled.countWrap}>
-							<span className={styled.countTitle}>{nameLength > 50 ? '字數超出上限' : ''}</span>
-							<span className={styled.countNumber}>
-								{nameLength <= 0 ? '' : `字數: ${nameLength} / 50`}
-							</span>
-						</div>
-					</form>
-
-					<form className={styled.form2}>
-						<label htmlFor=''>自我介紹</label>
-						<span className={styled.intro}>{userData?.introduction}</span>
-						<input
-							type='text'
-							value={intro}
-							className={styled.input2}
-							onChange={handleIntroChange}
-						/>
-
-						{/* 字數處理 */}
-						<div className={styled.countWrap}>
-							<span className={styled.countTitle}>{introLength > 160 ? '字數超出上限' : ''}</span>
-							<span className={styled.countNumber}>
-								{introLength <= 0 ? '' : `字數: ${introLength} / 160`}
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-		</Modal>
-	);
-}
-
 
 export function UserContent({
 	activeSection,
@@ -471,5 +234,241 @@ function UserProfile({ activeSection, setActiveSection }) {
 		</div>
 	);
 }
+
+function ReactModal({ modalIsOpen, setModalIsOpen }) {
+	const { userData, setUserData } = useMainFunction();
+	const [name, setName] = useState(`${userData.name}`);
+	const [nameLength, setNameLength] = useState(0);
+	const [intro, setIntro] = useState(`${userData.introduction}`);
+	const [introLength, setIntroLength] = useState(0);
+	const [avatar, setAvatar] = useState(null);
+	const [cover, setCover] = useState(null);
+	const coverInputRef = useRef(null);
+	const avatarInputRef = useRef(null);
+
+	const handleResetName = () => {
+		setName('');
+	};
+
+	const handleNameChange = (e) => {
+		e.preventDefault();
+		const inputValue = e.target.value;
+		const inputNoSpace = inputValue.replace(/\s+/g, '');
+		const inputLength = inputNoSpace.length;
+		setName(inputValue);
+		setNameLength(inputLength);
+	};
+
+	const handleIntroChange = (e) => {
+		e.preventDefault();
+		const inputValue = e.target.value;
+		const inputNoSpace = inputValue.replace(/\s+/g, '');
+		const inputLength = inputNoSpace.length;
+		setIntro(inputValue);
+		setIntroLength(inputLength);
+	};
+
+	// 阻擋預設行為
+	const handleSubmit = (event) => {
+		event.preventDefault();
+	};
+
+	// 大頭照上傳
+	const handleAvatarChange = (e) => {
+		e.preventDefault();
+		setAvatar(e.target.files[0]);
+	};
+
+	// 背景圖上傳
+	const handleCoverChange = (e) => {
+		e.preventDefault();
+		setCover(e.target.files[0]);
+	};
+
+	// 儲存按鈕事件
+	const handleSaveClick = async (e) => {
+		e.preventDefault();
+		if (nameLength > 50) {
+			alert('名稱字數不可超過 50 字!');
+			return;
+		} else if (introLength > 160) {
+			alert('自我介紹數字不可超過 160 字!');
+			return;
+		} else if (nameLength === 0) {
+			alert('請輸入名稱!');
+			return;
+		} else if (introLength === 0) {
+			alert('請輸入自我介紹!');
+			return;
+		}
+
+		const authToken = localStorage.getItem('token');
+		const userId = localStorage.getItem('userId');
+
+		// 修改個人資料
+		const response = await getEditPersonal(userId, authToken, name, avatar, cover, intro);
+
+		if (response) {
+			// 修改成功訊息
+			Swal.fire({
+				position: 'top',
+				title: '修改成功！',
+				timer: 1000,
+				icon: 'success',
+				showConfirmButton: false,
+			});
+
+			setIntro('');
+			setIntroLength(0);
+			// 個人資料
+			const data = await getUserData(userId, authToken);
+			setUserData(data);
+
+			// 編輯個人資料畫面更新
+			setName(data.name);
+
+			setModalIsOpen(false);
+			return;
+		}
+
+		// 修改失敗訊息
+		Swal.fire({
+			position: 'top',
+			title: '修改失敗！',
+			timer: 1000,
+			icon: 'error',
+			showConfirmButton: false,
+		});
+	};
+
+	return (
+		<Modal
+			isOpen={modalIsOpen}
+			onRequestClose={() => setModalIsOpen(false)}
+			ariaHideApp={false}
+			overlayClassName={styled.overlay}
+			className={styled.modal}
+		>
+			{/* 添加您希望顯示的內容 */}
+			<div>
+				{/* header */}
+				<div className={styled.header}>
+					<div className={styled.xButtonWrap}>
+						<button className={styled.xButton}>
+							<XLogo className={styled.xLogo} onClick={() => setModalIsOpen(false)} />
+						</button>
+
+						<span className={styled.headerTitle}>編輯個人資料</span>
+					</div>
+
+					<div>
+						<button className={styled.saveButton} onClick={handleSaveClick}>
+							儲存
+						</button>
+					</div>
+				</div>
+
+				{/* backImg */}
+				<div className={styled.backImgWrap}>
+					<img src={userData.cover || fakeBack} alt='' className={styled.backImg} />
+
+					<div className={styled.cameraWrap}>
+						<form action='' onSubmit={handleSubmit}>
+							<button
+								type='submit'
+								className={styled.button}
+								onClick={() => {
+									coverInputRef.current.click();
+								}}
+							>
+								<img src={camera} alt='' />
+							</button>
+							<input
+								className={styled.cameraButton2}
+								type='file'
+								id='upload'
+								ref={coverInputRef}
+								hidden
+								onChange={handleCoverChange}
+							/>
+						</form>
+
+						<button className={styled.button}>
+							<XLogo className={styled.xLogo} onClick={() => setModalIsOpen(false)} />
+						</button>
+					</div>
+				</div>
+
+				{/* avatar img */}
+				<div className={styled.avatarWrap}>
+					<img src={userData.avatar || fakePhoto} alt='' className={styled.avatarImg} />
+
+					<div className={styled.cameraButtonWrap}>
+						<form action='' onSubmit={handleSubmit}>
+							<button
+								type='submit'
+								className={styled.cameraButton}
+								onClick={() => {
+									avatarInputRef.current.click();
+								}}
+							>
+								<img src={camera} alt='' />
+							</button>
+							<input
+								type='file'
+								id='upload2'
+								ref={avatarInputRef}
+								hidden
+								onChange={handleAvatarChange}
+							/>
+						</form>
+					</div>
+				</div>
+
+				{/* 名稱、自我介紹 */}
+				<div className={styled.inputWrap}>
+					<form className={styled.form}>
+						<label htmlFor=''>名稱</label>
+						<input
+							type='text'
+							value={name}
+							className={styled.input}
+							onChange={handleNameChange}
+							onClick={handleResetName}
+						/>
+
+						{/* 字數處理 */}
+						<div className={styled.countWrap}>
+							<span className={styled.countTitle}>{nameLength > 50 ? '字數超出上限' : ''}</span>
+							<span className={styled.countNumber}>
+								{nameLength <= 0 ? '' : `字數: ${nameLength} / 50`}
+							</span>
+						</div>
+					</form>
+
+					<form className={styled.form2}>
+						<label htmlFor=''>自我介紹</label>
+						<span className={styled.intro}></span>
+						<input
+							type='text'
+							value={intro}
+							className={styled.input2}
+							onChange={handleIntroChange}
+						/>
+
+						{/* 字數處理 */}
+						<div className={styled.countWrap}>
+							<span className={styled.countTitle}>{introLength > 160 ? '字數超出上限' : ''}</span>
+							<span className={styled.countNumber}>
+								{introLength <= 0 ? '' : `字數: ${introLength} / 160`}
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</Modal>
+	);
+}
+
 
 export default UserProfile;

@@ -57,7 +57,7 @@ const AdminPage = () => {
 
 
 return(
-    <div className={styles.Container}>
+    <div className={styles.container}>
         
       <div>
       <AClogo/>
