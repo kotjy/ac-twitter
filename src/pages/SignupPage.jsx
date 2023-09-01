@@ -96,7 +96,9 @@ const SignupPage = () => {
         <button className={styles.Authbutton} onClick={handleClick}>註冊</button>
   
         <div>
+        <Link to="/login">
         <u className={styles.LinkText}>取消</u>
+        </Link>
         </div>
       </div>
     )

@@ -79,7 +79,9 @@ return(
       </div>
       <button className={styles.Authbutton} onClick={handleClick}>登入</button>
       <div className={styles.LinkContainer}>
+      <Link to='/login'>  
       <u className={styles.EndLinkText}>前台登入</u>
+      </Link>
       </div>
     </div>
 )

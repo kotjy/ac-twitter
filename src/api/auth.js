@@ -34,13 +34,34 @@ export const setting = async(userId, token) =>{
         Authorization: 'Bearer ' + token,
     },
 });
-    console.log(response)
+
      return response
    }catch(error){
-       console.error(`Error fetching ReplyTweets for user ${userId}: ${error}`)
+       console.error(`Error setting for user ${userId}: ${error}`)
        return { success: false};
    }
-} 
+}
+
+export const setpassword = async({userId, password, email, name, account, checkPassword}) =>{
+    
+    try {
+        const obj = {
+            password, email, name, account, checkPassword
+        };
+        const { data } = await axios.put(`${authUrl}/users/${userId}/setting`, obj, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            },
+        });
+        return { success: true, data };
+    } catch (error) {
+        console.error('[PasswordChange Failed]:', error);
+        return { success: false };
+    }
+   
+
+}
+
 
 
 //admin 登入
@@ -49,7 +70,7 @@ export const admin = async({account,password}) =>{
     try{
     
    const {data} = await axios.post(`${authUrl}/admin/signin`, {account,password});
-  
+
    return { success: true, ...data }
    }catch(error){
        console.error(error)
