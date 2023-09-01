@@ -11,6 +11,7 @@ export const postFollow = async (token, id) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
+		console.log(res)
 		return res.data;
 	} catch (error) {
 		console.error('[Post Follow failed]: ', error);
@@ -25,6 +26,7 @@ export const deleteFollow = async (token, followingId) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
+		console.log(res)
 		return res.data;
 	} catch (error) {
 		console.error('[Delete Follow failed]: ', error.response.data);

@@ -102,7 +102,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
 
       <div>
         <div className={styled.followButton}>
-          <span>{userData?.followCounts}位</span>
+          <span>{userData?.followerCounts}位</span>
           <span className={styled.followTitle}>跟隨中</span>  
         </div>
       </div>

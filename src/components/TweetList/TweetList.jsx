@@ -58,7 +58,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 						}}
 					>
 						{item?.isLiked ? <img src={redLikeIcon} /> : <img src={likeIcon} />}
-						{item?.likeCount}
+					
 					</button>
 				</div>
 			</div>

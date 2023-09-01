@@ -20,9 +20,9 @@ export function FollowButton ({ tweetId, followingList, setFollowingList, setFol
 
 			// 追隨API
 			if (isNotFollow) {
-				await postFollow(userId, authToken);
+				await postFollow(authToken, userId);
 
-				setFollow(true);
+				setFollow(1);
 
 				// 更新追隨者畫面
 				const followed = await getFollowedList(userId2, authToken);
@@ -35,9 +35,9 @@ export function FollowButton ({ tweetId, followingList, setFollowingList, setFol
 
 			// 取消追蹤API
 			if (following) {
-				await deleteFollow(userId, authToken);
+				await deleteFollow(authToken, userId);
 
-				setFollow(false);
+				setFollow(0);
 
 				// 更新追隨者畫面
 				const followed = await getFollowedList(userId2, authToken);
@@ -67,7 +67,7 @@ function FollowList ({ activeSection, setActiveSection}) {
   const navigate = useNavigate();
 	const [followedList, setFollowedList] = useState([]);
 	const [followingList, setFollowingList] = useState([]);
-  const authToken = localStorage.getItem('authToken');
+  const authToken = localStorage.getItem('token');
 	const userId = localStorage.getItem('userId');
 
   const handleFollowerClick = (e) => {

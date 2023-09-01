@@ -141,7 +141,7 @@ const {
 		try {
 			const authToken = localStorage.getItem('token');
 			const theTweet = await getIdTweets(authToken, getTweet?.id);
-			if (theTweet.isLiked === false) {
+			if (theTweet.isLiked === 0) {
 				await postLike(authToken, theTweet?.id);
 				const aTweet = await getIdTweets(authToken, getTweet?.id);
 				setGetTweet(aTweet);
@@ -219,36 +219,39 @@ const {
 	};
 
   // 在推文清單上按喜歡
+
 	const handleLikeClick = async (itemID) => {
-		try {
-			const authToken = localStorage.getItem('token');
-			setTweets(
-				tweets.map((item) => {
-					if (item.id === itemID) {
-						if (item.isLiked === false) {
-							postLike(authToken, itemID);
-							return {
-								...item,
-								likeCounts: item.likeCounts + 1,
-								isLiked: !item.isLiked,
-							};
-						} else {
-							postUnlike(authToken, itemID);
-							return {
-								...item,
-								likeCounts: item.likeCounts - 1,
-								isLiked: !item.isLiked,
-							};
-						}
-					} else {
-						return item;
-					}
-				}),
-			);
-		} catch (error) {
-			console.log('Error:', error.message);
-		}
-	};
+       try {
+            const authToken = localStorage.getItem('token');
+            setTweets(
+                tweets.map((item) => {
+                    if (item.id === itemID) {
+											console.log(item.isLiked)
+                        if (item.isLiked === 0) {
+                            postLike(authToken, itemID);
+                            return {
+                                ...item,
+                                likeCounts: item.likeCounts + 1,
+                                isLiked: !item.isLiked,
+                            };
+                        } else {
+                            postUnlike(authToken, itemID);
+                            return {
+                                ...item,
+                                likeCounts: item.likeCounts - 1,
+                                isLiked: !item.isLiked,
+                            };
+                        }
+                    } else {
+                        return item;
+                    }
+                }),
+            );
+        } catch (error) {
+            console.log('Error:', error.message);
+        }
+    };
+
 
 
 // 追蹤功能
@@ -261,7 +264,9 @@ const {
 				return;
 			}
 			const userLoginID = localStorage.getItem('userId');
+			console.log(authToken);
 			const followingList = await getFollowingList(userLoginID, authToken);
+
 			if (followingList.some((popular) => popular.id === otherUserId)) {
 				deleteFollow(otherUserId, authToken);
 			} else {
