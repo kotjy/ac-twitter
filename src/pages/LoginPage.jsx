@@ -81,9 +81,13 @@ return (
       <button className={styles.Authbutton} onClick={handleClick}>登入</button>
      
       <div className={styles.LinkContainer}>
+      <Link to="/signup">
       <u className={styles.LinkText}>註冊 Alphitter</u>
+      </Link>
       <span className={styles.LinkText}>.</span>
+      <Link to="/admin">
       <u className={styles.LinkText}>後台登入</u>
+      </Link>
       </div>
     </div>
 )
