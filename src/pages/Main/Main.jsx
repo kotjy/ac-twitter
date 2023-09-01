@@ -268,9 +268,9 @@ const {
 			const followingList = await getFollowingList(userLoginID, authToken);
 
 			if (followingList.some((popular) => popular.id === otherUserId)) {
-				deleteFollow(otherUserId, authToken);
+				deleteFollow(authToken, otherUserId);
 			} else {
-				postFollow(otherUserId, authToken);
+				postFollow(authToken, otherUserId);
 			}
 		} catch (error) {
 			console.error(error);
