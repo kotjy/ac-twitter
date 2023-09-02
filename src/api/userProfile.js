@@ -92,14 +92,14 @@ export const getFollowedList = async (userId, token) => {
 };
 
 // 編輯個人資料
-export const getEditPersonal = async (userId, token, name, avatar, cover, introduction) => {
+export const getEditPersonal = async (userId, token, name, avatar, banner, introduction) => {
 	try {
 		const formData = new FormData();
 		formData.append('name', name);
 		formData.append('avatar', avatar);
-		formData.append('cover', cover);
+		formData.append('banner', banner);
 		formData.append('introduction', introduction);
-
+    console.log(banner);
 		const response = await axios.put(`${authURL}/users/${userId}`, formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',

@@ -246,7 +246,7 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 	const [cover, setCover] = useState(null);
 	const coverInputRef = useRef(null);
 	const avatarInputRef = useRef(null);
-
+  
 	const handleResetName = () => {
 		setName('');
 	};
