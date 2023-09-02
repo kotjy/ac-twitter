@@ -62,10 +62,7 @@ const SettingPage = () => {
     return(
         <div className={styles.SettingContainer}>
         <div className={styles.SettingDiv}> 
-        <div className="">
         
-        <hr></hr>
-        </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="帳號"
