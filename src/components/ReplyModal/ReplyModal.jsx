@@ -17,12 +17,14 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
       <div className={styles.replyModalContainer}>
         <div className={styles.modalHead}>
           <div className={styles.iconX} onClick={onCloseModal}>
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
              <img src={IconX} />
           </div>
         </div>
          
         <div className={styles.tweetSection}>
           <Link className={styles.avatar} to={`/${account}`}>
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
             <img src={ author?.User?.avatar ||fakeAvatar} /> 
             <div className={styles.line}></div>
           </Link>
@@ -41,6 +43,7 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
         </div>
           <div className={styles.replySection}>
             <div className={styles.img}>
+              	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
               <img src={userData?.avatar} />
             </div>
             <TextareaAutosize

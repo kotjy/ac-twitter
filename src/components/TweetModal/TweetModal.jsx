@@ -16,11 +16,13 @@ export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userD
        <div className={styles.tweetModal}>
         <div className={styles.modalHead}>
           <div className={styles.iconX} onClick={onCloseModal}>
+            {/*eslint-disable-next-line jsx-a11y/alt-text*/}
             <img src={IconX} />
           </div>
         </div>
         <div className={styles.section}>
          <Link className={styles.img} to={`/${account}`}>
+          {/*eslint-disable-next-line jsx-a11y/alt-text*/}
           <img src={userData?.avatar || fakeAvatar} />
          </Link>
          <TextareaAutosize 

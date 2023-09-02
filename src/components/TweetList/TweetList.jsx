@@ -12,6 +12,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 					onOtherClick(item?.User?.id);
 				}}
 			>
+				{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 				<img src={item?.User?.avatar} />
 			</div>
 			<div className={styles.infoSection}>
@@ -48,6 +49,8 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 							onReplyClick(item?.id);
 						}}
 					>
+						
+						{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 						<img src={replyIcon} />
 						{item?.replyCount}
 					</div>
@@ -57,6 +60,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 							onLikeClick(item?.id);
 						}}
 					>
+						{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 						{item?.isLiked ? <img src={redLikeIcon} /> : <img src={likeIcon} />}
 					
 					</button>

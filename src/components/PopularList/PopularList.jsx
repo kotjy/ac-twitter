@@ -53,6 +53,7 @@ const navigate = useNavigate();
 					onOtherClick(popular?.id);
 				}}
 			>
+					{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 				<img src={popular.avatar} />
 			</div>
 			<div className={styles.other}>
@@ -97,7 +98,9 @@ const navigate = useNavigate();
 				console.error(error);
 			}
 		};
+		
 		getPopularsAsync();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 

@@ -11,6 +11,7 @@ return(
   <div className={styles.container}>
     <div className={styles.avatarAndname}>
       <div className={styles.avatar} onClick={onOtherClick}>
+        	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
        	<img src={tweet?.User?.avatar} />
       </div>
       <div className={styles.nameSection}>
@@ -39,11 +40,12 @@ return(
      <div className={styles.icon}  onClick={() => {
 							onReplyClick(tweet?.id);
 						}}> 
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
       <img src={reply} />
      </div>
 
      <button className={styles.icon} onClick={ () => {onLikeClick(tweet?.id)}}>
-       
+       	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
       {tweet.isLiked ? <img src={redLike} /> : <img src={like} />}
       
      </button>

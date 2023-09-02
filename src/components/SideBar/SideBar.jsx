@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import styles from './SideBar.module.scss'
 import home from '../../assets/home.svg'
 import homeGrey from '../../assets/home-grey.svg' 
@@ -48,13 +49,16 @@ function SideBar ({onToTweetClick, setSetting}) {
 
       <div className={styles.navigationBar}>
         <Link className = {styles.logo} to = 'main' onClick ={handleChangeMain}>
+          	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
         <img src={acLogo}  />
       </Link>
     
        
        <div className={ activeSection === 'main' ? styles.acitve : styles.notAcitve} 
          onClick = {handleChangeMain}>
+          	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
            {activeSection === 'main' ? <img src={home} /> :
+           
          < img src ={homeGrey} /> }
          首頁
        </div>

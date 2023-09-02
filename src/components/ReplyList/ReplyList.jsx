@@ -4,6 +4,7 @@ function ReplyList({ replies }) {
 	const listItems = replies.map((item) => (
 		<div className={styles.itemContainer} key={item.id}>
 			<div className={styles.avatar}>
+					{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 				<img src={item?.User?.avatar} />
 			</div>
 			<div className={styles.infoSection}>

@@ -110,7 +110,7 @@ export function AdminTweets({
 							<div className={styled.tweetWrap}>
 								{(buttonStatus === '推文' ||
 									buttonStatus === '喜歡的內容' ||
-									activeComponent === 'tweets') && <span>{tweet?.description}</span>}
+									activeComponent === 'tweets') && <span>{tweet?.Tweet?.description}</span>}
 								{buttonStatus === '回覆' && <span>{tweet?.comment}</span>}
 
 								{(activeSection === 'followed' || activeSection === 'following') && (

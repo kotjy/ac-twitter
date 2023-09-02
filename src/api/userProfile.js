@@ -106,7 +106,7 @@ export const getEditPersonal = async (userId, token, name, avatar, cover, introd
 				Authorization: 'Bearer ' + token,
 			},
 		});
-
+    console.log(response);
 		return response.data;
 	} catch (error) {
 		console.error(`Error fetching edit personal for user ${userId}: ${error}`);

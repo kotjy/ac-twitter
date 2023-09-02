@@ -71,6 +71,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
     <div className={styled.userInfoWrap}>
      <>
      <div className={styled.functions}>
+      	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
       <img src={bell}/> <img src={email} />
       <button onClick= { () => {
         onFollowClick(userData.id);

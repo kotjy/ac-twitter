@@ -2,7 +2,7 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 import Swal from 'sweetalert2';
 

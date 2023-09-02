@@ -2,7 +2,6 @@
 import Main from './pages/Main/Main'
 import  LoginPage from './pages/LoginPage'
 import SettingPage from './pages/SettingPage';
-import RegisterPage from './pages/SignupPage';
 import AdminPage from './pages/AdminPage';
 import {MainProvider} from './contexts/MainContext'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'

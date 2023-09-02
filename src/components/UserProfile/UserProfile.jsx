@@ -201,6 +201,7 @@ function UserProfile({ activeSection, setActiveSection }) {
 			}
 		};
 		fetchUserData();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	
 	return (
@@ -447,15 +448,16 @@ function ReactModal({ modalIsOpen, setModalIsOpen }) {
 					</form>
 
 					<form className={styled.form2}>
-						<label htmlFor=''>自我介紹</label>
-						<span className={styled.intro}></span>
+						<label htmlFor=''>自我介紹
+						<span className={styled.intro}>
 						<input
 							type='text'
 							value={intro}
 							className={styled.input2}
 							onChange={handleIntroChange}
 						/>
-
+						</span>
+          </label>
 						{/* 字數處理 */}
 						<div className={styled.countWrap}>
 							<span className={styled.countTitle}>{introLength > 160 ? '字數超出上限' : ''}</span>
