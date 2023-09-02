@@ -48,9 +48,11 @@ const SignupPage = () => {
          });
          navigate('/login')
          return;
+
        }else if(email){
 
          
+
        }
        Swal.fire({
          position: 'top',

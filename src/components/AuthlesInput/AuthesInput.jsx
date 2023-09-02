@@ -2,7 +2,7 @@ import styles from './AuthesInput.module.css'
 
 const AuthInput = ({type,label,value,onChange,placeholder}) =>{
    return(
-     <container className={styles.authInputContainer}>
+     <div className={styles.authInputContainer}>
         <label className={styles.authInputLabel}>{label}</label>
         <div>
           <input 
@@ -15,7 +15,7 @@ const AuthInput = ({type,label,value,onChange,placeholder}) =>{
 
         </div>
 
-     </container>
+     </div>
 
    )
 

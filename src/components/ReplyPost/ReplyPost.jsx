@@ -2,20 +2,21 @@ import styles from './ReplyPost.module.scss'
 import reply from '../../assets/reply.svg'
 import like from '../../assets/like.svg'
 import redLike from '../../assets/redLike.svg'
-import fakeAvatar from '../../assets/fake-avatar.svg'
 
-//假資料記得替代 
+
+
 function ReplyPost ({tweet, onReplyClick, onOtherClick, onLikeClick}) {
 
 return(
   <div className={styles.container}>
     <div className={styles.avatarAndname}>
       <div className={styles.avatar} onClick={onOtherClick}>
-        <img src={fakeAvatar}  />
+        	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
+       	<img src={tweet?.User?.avatar} />
       </div>
       <div className={styles.nameSection}>
         <div className={styles.nickname} onClick={onOtherClick}>
-          {tweet?.User?.name} hannah
+          {tweet?.User?.name}
           </div>
       <div className={styles.accountName} onClick={onOtherClick}>
         @{tweet?.User?.account}
@@ -24,26 +25,28 @@ return(
     </div>
 
     <div className={styles.infoSection}>
-     <div className={styles.contentSection}>aaadsffde</div>
-     <div className={styles.postTime}>101.12.09</div>
+     <div className={styles.contentSection}>{tweet?.description}</div>
+     <div className={styles.postTime}>{tweet?.createdAt}</div>
 
      <div className={styles.replyAndLikes}>
       <div className={styles.counter}>
-        {tweet?.replyCounts} <span>&nbsp;回覆</span>
+        {tweet?.replyCount} <span>&nbsp;回覆</span>
       </div>
       <div className={styles.counter}>
-        {tweet?.likeCounts} <span>&nbsp;喜歡次數</span>
+        {tweet?.likeCount} <span>&nbsp;喜歡次數</span>
       </div>
      </div>
     <div className={styles.Icons}>
-     <div className={styles.icon}  onClick={onReplyClick}>  {/*補充功能*/}
+     <div className={styles.icon}  onClick={() => {
+							onReplyClick(tweet?.id);
+						}}> 
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
       <img src={reply} />
      </div>
 
      <button className={styles.icon} onClick={ () => {onLikeClick(tweet?.id)}}>
-       <img src={redLike} />
-      {/*
-      {tweet.isLiked ? <img src={redLike} /> : <img src={like} />} {/*api property isLike*/}
+       	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
+      {tweet.isLiked ? <img src={redLike} /> : <img src={like} />}
       
      </button>
     </div>

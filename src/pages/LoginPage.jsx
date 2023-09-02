@@ -2,23 +2,30 @@ import AuthInput from '../components/AuthlesInput/AuthesInput'
 import { ReactComponent as AClogo} from '../assets/alphacamp-logo.svg'
 import styles from './LoginPage.module.css'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 import Swal from 'sweetalert2';
 
 const LoginPage = () => {
 const [account, setAccount]=useState('')
 const [password, setpassWord]=useState('')
+const navigate = useNavigate();
 
-const handleClick = async ()=> {
+const handleClick = async (e)=> {
+  e.preventDefault();
 if(account.length === 0){
+    alert('請輸入帳號！')
     return;
 }
-if(password.length === 0){
+if(account.length > 50){
+  alert('帳號字數不可超過 50 字!')
     return;
 }
+if (password === '') {
+			alert('請輸入密碼!');
+			return;
+		}
  
-
 const  {success, data } = 
 await login({account,password});
 console.log(data)
@@ -26,8 +33,6 @@ console.log(data)
 if (success) {     
     localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.user.id);    
-
-
     Swal.fire({
       position:'top',
       title:'登入成功',
@@ -35,6 +40,7 @@ if (success) {
       icon: 'success',
       showConfirmButton: false,
     })
+    navigate('/main')
     return;    
 }else{
     Swal.fire({
@@ -50,7 +56,7 @@ if (success) {
 
 
 return (
-    <div className={styles.Container}>
+    <div className={styles.container}>
       <AClogo/>
       <h1>登入 Alphitter</h1>
       <div className={styles.AuthInputContainer}>
@@ -62,18 +68,23 @@ return (
       </div>
       <div className={styles.AuthInputContainer}>
          <AuthInput
+         type = 'password'
          label="密碼"
          value={password}
          onChange={(input)=>setpassWord(input)} 
          />
       </div>
-      {/* <Link to='/main' className={styles.LinkStyle}> */}
+     
       <button className={styles.Authbutton} onClick={handleClick}>登入</button>
-      {/* </Link> */}
+     
       <div className={styles.LinkContainer}>
+      <Link to="/signup">
       <u className={styles.LinkText}>註冊 Alphitter</u>
+      </Link>
       <span className={styles.LinkText}>.</span>
+      <Link to="/admin">
       <u className={styles.LinkText}>後台登入</u>
+      </Link>
       </div>
     </div>
 )

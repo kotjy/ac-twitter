@@ -1,60 +1,106 @@
 import AuthInput from '../components/AuthlesInput/AuthesInput'
 import styles from './LoginPage.module.css'
-import SideBar from '../components/SideBar/SideBar'
 import { useEffect, useState } from 'react';
+import { setting, setpassword } from '../api/auth';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const SettingPage = () => {
-    const [userName, setUserName]=useState('')
-    const [passWord, setpassWord]=useState('')
-    const [Name, setName]=useState('')
-    const [Email, setEmail]=useState('')
-    const [Surepassword, setSurepassword]=useState('')
+
+   const [account, setaccount]=useState('')
+   const [password, setpassWord]=useState('')
+   const [name, setname]=useState('')
+   const [email, setemail]=useState('')
+   const [checkPassword, setcheckPassword]=useState('')
+   const navigate = useNavigate();
+   
+   useEffect(() => {
+      
+      const getinputData = async () => {
+        try {
+         const userId = localStorage.getItem('userId');
+		   const authToken = localStorage.getItem('token');
+          const res = await setting(userId,authToken);
+          setaccount(res.data.account);
+          setname(res.data.name);
+          setemail(res.data.email);
+           
+        } catch (error) {
+          console.error(error);
+        }
+      };   
+      getinputData();
+    }, []);
+
+   const userId =  localStorage.getItem('userId');
+   const handleSaveClick = async (e) =>{
+      e.preventDefault();
+      const { success, data } = await setpassword({password, email, name, userId, account, checkPassword})
+     
+      if (success && password===checkPassword) {
+         localStorage.setItem('data', data);
+         Swal.fire({
+           position: 'top',
+           title: '設定成功！',
+           timer: 1000,
+           icon: 'success',
+           showConfirmButton: false,
+         });
+         navigate('/login')
+         return;
+       }
+       Swal.fire({
+         position: 'top',
+         title: '設定失敗！',
+         timer: 1000,
+         icon: 'error',
+         showConfirmButton: false,
+       });
+      
+   }
 
     return(
         <div className={styles.SettingContainer}>
-        <div className={styles.SettingSidebar}> 
-        <SideBar/>
-        </div>
         <div className={styles.SettingDiv}> 
-
-   
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="帳號"
-           value={userName}
-           onChange={(input)=>setUserName(input)} 
+           value={account}
+           onChange={(input)=>setaccount(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="名稱"
-           value={Name}
-           onChange={(input) =>setName(input)} 
+           value={name}
+           onChange={(input) =>setname(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="Email"
-           value={Email}
-           onChange={(input)=>setEmail(input)} 
+           value={email}
+           onChange={(input)=>setemail(input)} 
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
+           type = 'password'
            label="密碼"
-           value={passWord}
+           value={password}
            onChange={(input)=>setpassWord(input)}  
            />
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
+           type = 'password'
            label="確認密碼"
-           value={Surepassword}
-           onChange={(input)=>setSurepassword(input)} 
+           value={checkPassword}
+           onChange={(input)=>setcheckPassword(input)} 
            />
         </div>
         <div className={styles.ButtonContainer}>
-        <button className={styles.Authbutton}>儲存</button>
+        <button className={styles.Authbutton} onClick={handleSaveClick}>儲存</button>
         </div>
         </div>
         </div>

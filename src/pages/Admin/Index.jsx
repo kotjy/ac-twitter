@@ -9,14 +9,15 @@ function AdminMain() {
 	const [activeComponent, setActiveComponent] = useState('tweets');
 
 	return (
+		<>
 		<div className={styled.container}>
-			{/* 寬度 */}
+			
 			<div className={styled.section}>
 				<div className={styled.sideBar}>
 					<AdminSidebar activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
 				</div>
 
-				{/* tweet section */}
+		
 				<div className={styled.listContainer}>
 					<AdminHeader activeComponent={activeComponent} />
 					{activeComponent === 'tweets' && <AdminTweetList activeComponent={activeComponent} />}
@@ -24,6 +25,7 @@ function AdminMain() {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 }
 

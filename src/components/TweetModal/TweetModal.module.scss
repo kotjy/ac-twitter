@@ -68,9 +68,15 @@
         .modalbottom{
         display: flex;
         flex-direction: row;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         margin:22px 16px 16px auto ;
+
+        .warnning{
+          margin-right: 10px;
+          color: #fc5a5a;
+          font-size: 12px;
+        }
 
         span{
          font-weight:500;

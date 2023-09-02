@@ -1,10 +1,21 @@
-# Getting Started with Create React App
+# 透過React Create React App 建立 Alpha Twitter專案
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+為了讓Alpha Camp 的使用者有一個專業的社群平台交流，於是建立此專案
 
-## Available Scripts
+## 專案視覺
+*LoginPage
+![image](https://github.com/kotjy/ac-twitter/assets/132338192/4de345dc-4fae-4cbd-a859-9eae187487f3)
 
-In the project directory, you can run:
+*MainPage
+![image](https://github.com/kotjy/ac-twitter/assets/132338192/acc99a13-f33c-444a-8647-b8b19ef4b7c8)
+
+  *MainPage 上傳貼文
+  ![image](https://github.com/kotjy/ac-twitter/assets/132338192/fc114e78-dd02-41ef-aa57-bb4c608632ad)
+  
+  *MainPage 個人資料
+![image](https://github.com/kotjy/ac-twitter/assets/132338192/7dc58b99-be23-4f84-a14c-43d5d641c4a9)
+
+
 
 ### `npm start`
 

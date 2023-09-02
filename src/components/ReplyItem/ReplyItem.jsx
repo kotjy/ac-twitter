@@ -8,6 +8,7 @@ function ReplyItem() {
 	return (
 		<div className={styles.container}>
 			<Link className={styles.avatar} to='apple'>
+					{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 				<img src={fakeAvatar} />
 			</Link>
 			<div className={styles.infoSection}>

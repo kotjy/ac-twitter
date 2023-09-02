@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import styles from './SideBar.module.scss'
 import home from '../../assets/home.svg'
 import homeGrey from '../../assets/home-grey.svg' 
@@ -8,33 +9,38 @@ import settingBlack from '../../assets/setting-black.svg'
 import logout from '../../assets/logout.svg'
 import acLogo from '../../assets/logo.svg'
 import {useMainFunction} from '../../contexts/MainContext'
-import {Link, Navigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom' 
 
-function SideBar ({onToTweetClick}) {
+function SideBar ({onToTweetClick, setSetting}) {
  const {activeSection,setActiveSection} =useMainFunction();
- 
+ const navigate = useNavigate();
+
   const handleChangeMain = (e) => {
     e.preventDefault();
     setActiveSection('main');
+    setSetting(false)
   }
 
   const handleChangeUserProfile = (e) => {
    e.preventDefault();
    setActiveSection('userProfile');
+   setSetting(false)
   }
 
   const handleChangeSetting = (e) => {
    e.preventDefault();
    setActiveSection('setting')
+   setSetting((pre) => !pre)
   };
 
   //logout
   const handleLogout = (e) => {
     e.preventDefault();
-    //補充api //登出
+    localStorage.removeItem('token');
+		localStorage.removeItem('userId');
 
-     Navigate('/login')
+     navigate('/login')
   }
 
 
@@ -43,13 +49,16 @@ function SideBar ({onToTweetClick}) {
 
       <div className={styles.navigationBar}>
         <Link className = {styles.logo} to = 'main' onClick ={handleChangeMain}>
+          	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
         <img src={acLogo}  />
       </Link>
     
        
        <div className={ activeSection === 'main' ? styles.acitve : styles.notAcitve} 
          onClick = {handleChangeMain}>
+          	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
            {activeSection === 'main' ? <img src={home} /> :
+           
          < img src ={homeGrey} /> }
          首頁
        </div>

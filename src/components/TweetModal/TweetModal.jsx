@@ -16,11 +16,13 @@ export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userD
        <div className={styles.tweetModal}>
         <div className={styles.modalHead}>
           <div className={styles.iconX} onClick={onCloseModal}>
+            {/*eslint-disable-next-line jsx-a11y/alt-text*/}
             <img src={IconX} />
           </div>
         </div>
         <div className={styles.section}>
          <Link className={styles.img} to={`/${account}`}>
+          {/*eslint-disable-next-line jsx-a11y/alt-text*/}
           <img src={userData?.avatar || fakeAvatar} />
          </Link>
          <TextareaAutosize 
@@ -33,6 +35,7 @@ export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userD
         </div>
         <div className={styles.modalbottom}>
           <span >{prompts}</span>
+          <div className={styles.warnning}>字數不可超過140字</div>
           <button className={styles.tweetButton} onClick ={onPostTweetClick}>
             推文
           </button>

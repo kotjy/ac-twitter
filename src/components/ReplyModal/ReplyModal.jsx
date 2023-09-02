@@ -9,6 +9,7 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
   const { userData } = useMainFunction();
   const account = userData?.User?.account
   
+  //avatar待修正
 
   return(
     <div className={styles.container}>
@@ -16,20 +17,22 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
       <div className={styles.replyModalContainer}>
         <div className={styles.modalHead}>
           <div className={styles.iconX} onClick={onCloseModal}>
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
              <img src={IconX} />
           </div>
         </div>
-
+         
         <div className={styles.tweetSection}>
           <Link className={styles.avatar} to={`/${account}`}>
-            <img src={author?.User.avatar || fakeAvatar} />
+            	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
+            <img src={ author?.User?.avatar ||fakeAvatar} /> 
             <div className={styles.line}></div>
           </Link>
           <div className={styles.infoSection}>
             <div className={styles.nameSection}>
               <div className={styles.nickname}> {author?.User?.name}</div>
               <div className={styles.accountAndPeriod}>
-                @{author?.user?.account}．{author?.period}
+                @{author?.User?.account}．{author?.createdAt}
               </div>
             </div>
           <div className={styles.contentSection}>{author?.description} </div>
@@ -40,6 +43,7 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
         </div>
           <div className={styles.replySection}>
             <div className={styles.img}>
+              	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
               <img src={userData?.avatar} />
             </div>
             <TextareaAutosize
@@ -52,8 +56,10 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
           </div>
           <div className={styles.modalBottom}>
             <span>{prompts}</span>
+            <div className={styles.warnning}>內容不可空白</div>
             <button
-             className={styles.replyButton} onClick={onReplyClick}> 
+             className={styles.replyButton} 
+             onClick={()=> { onReplyClick(author?.id)}}> 
               回覆
              </button>
           </div>

@@ -71,6 +71,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
     <div className={styled.userInfoWrap}>
      <>
      <div className={styled.functions}>
+      	{/*eslint-disable-next-line jsx-a11y/alt-text*/}
       <img src={bell}/> <img src={email} />
       <button onClick= { () => {
         onFollowClick(userData.id);
@@ -87,7 +88,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
 
      <div className={styled.userinfo}>
       <span className={styled.title}> {userData?.name} </span>
-       <span className={styled.account}> {userData?.account} </span>
+       <span className={styled.account}> @{userData?.account} </span>
 
        <span>{userData?.introduction}</span>
      </div>
@@ -102,7 +103,7 @@ export function StateButton({ buttonStatus, setButtonStatus }){
 
       <div>
         <div className={styled.followButton}>
-          <span>{userData?.followCounts}位</span>
+          <span>{userData?.followerCounts}位</span>
           <span className={styled.followTitle}>跟隨中</span>  
         </div>
       </div>
