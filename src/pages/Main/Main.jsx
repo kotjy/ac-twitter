@@ -13,11 +13,11 @@ import { useEffect } from "react";
 import { postFollow, deleteFollow,  } from "../../api/followship";
 import { postReply, getAllReply } from "../../api/reply";
 import { postLike, postUnlike } from "../../api/like";
-
+import { useState } from "react";
 
 function Main() {
 	const navigate = useNavigate();
-
+  const [setting, setSetting] = useState(false);
 const {
 	  activeSection,
     setActiveSection,
@@ -352,11 +352,14 @@ const {
 
 
   return(
-<div
-			className={styles.container}
+	<div
+			className={`${styles.container} ${
+				showTweetModal || showReplyModal ? styles.showModal : styles.hideModal
+			}`}
 		>
 			<div className={styles.sidebarSection}>
 				<SideBar
+				  setSetting={setSetting}
 				  activeSection={activeSection}
 					setActiveSection={setActiveSection}
 					onToTweetClick={handleToTweetModal}
@@ -364,6 +367,7 @@ const {
 			</div>
 			<div className={styles.mainSection}>
 				<MainSection
+				  setSetting={setSetting}
 					activeSection={activeSection}
 					setActiveSection={setActiveSection}
 					ToTweetModalHandler={handleToTweetModal}
@@ -387,7 +391,7 @@ const {
 				/>
 			</div>
 			<div className={styles.popularListSection}>
-				<PopularList onOtherClick={handleOtherClick} onFollowToggle={handleFollowToggle} />
+				{ setting === false && <PopularList onOtherClick={handleOtherClick} onFollowToggle={handleFollowToggle}  /> }
 			</div>
 			<div
 				className={`${styles.tweetModal} ${showTweetModal ? styles.showModal : styles.hideModal}`}

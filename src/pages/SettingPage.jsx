@@ -1,6 +1,5 @@
 import AuthInput from '../components/AuthlesInput/AuthesInput'
 import styles from './LoginPage.module.css'
-import SideBar from '../components/SideBar/SideBar'
 import { useEffect, useState } from 'react';
 import { setting, setpassword } from '../api/auth';
 import Swal from 'sweetalert2';
@@ -62,13 +61,9 @@ const SettingPage = () => {
 
     return(
         <div className={styles.SettingContainer}>
-        <div className={styles.SettingSidebar}> 
-        <SideBar
-        />
-        </div>
         <div className={styles.SettingDiv}> 
         <div className="">
-        <p><b>帳戶設定</b></p>
+        
         <hr></hr>
         </div>
         <div className={styles.SettingInputContainer}>

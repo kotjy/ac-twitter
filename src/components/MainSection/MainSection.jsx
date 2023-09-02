@@ -7,8 +7,10 @@ import UserProfile from '../UserProfile/UserProfile.jsx';
 import FollowList from '../FollowList/FollowList.jsx';
 import ReplyList from '../ReplyList/ReplyList.jsx';
 import styles from './MainSection.module.scss'
+import SettingPage from '../../pages/SettingPage.jsx';
 
 function MainSection ({
+	setSetting,
   activeSection,
 	setActiveSection,
 	ToTweetModalHandler,
@@ -83,6 +85,9 @@ function MainSection ({
        {activeSection === 'userProfile' && (
 				<UserProfile activeSection={activeSection} setActiveSection={setActiveSection} />
 			)}
+
+			{/* Setting */}
+			{activeSection === 'setting' && <SettingPage  setSetting={setSetting}/>}
 
       {/*followList */}
       {(activeSection === 'follower' || activeSection === 'following') && (

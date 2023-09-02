@@ -8,7 +8,7 @@ import {MainProvider} from './contexts/MainContext'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import AdminMain from './pages/Admin/Index';
 import SignupPage from './pages/SignupPage';
-
+import Home from './pages/Home';
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
     <div className='app'>
       <BrowserRouter>
       <Routes>
+        <Route path='*' element={<Home />} />
         <Route path='main' element = {<Main/>}/>
         <Route path="login" element={<LoginPage />} />
         <Route path="setting" element={<SettingPage />} />

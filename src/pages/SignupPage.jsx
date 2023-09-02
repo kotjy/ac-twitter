@@ -23,9 +23,17 @@ const SignupPage = () => {
       for(const element of signupElement){
          if(element.length===0){
             return
-         }
-      }
-
+         }else if (account.length > 50) {
+			alert('帳號字數不可超過 50 字!');
+			return;
+		} else if (name.length > 50) {
+			alert('名稱字數不可超過 50 字!');
+			return;
+      } else if (password !== checkPassword) {
+			alert('密碼與密碼確認不相同');
+			return;
+		}
+   }
       const { success, data } = await signup({
       account, name, email, password, checkPassword});
 

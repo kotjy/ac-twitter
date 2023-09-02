@@ -8,26 +8,29 @@ import settingBlack from '../../assets/setting-black.svg'
 import logout from '../../assets/logout.svg'
 import acLogo from '../../assets/logo.svg'
 import {useMainFunction} from '../../contexts/MainContext'
-import {Link, Navigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom' 
 
-function SideBar ({onToTweetClick}) {
+function SideBar ({onToTweetClick, setSetting}) {
  const {activeSection,setActiveSection} =useMainFunction();
  const navigate = useNavigate();
 
   const handleChangeMain = (e) => {
     e.preventDefault();
     setActiveSection('main');
+    setSetting(false)
   }
 
   const handleChangeUserProfile = (e) => {
    e.preventDefault();
    setActiveSection('userProfile');
+   setSetting(false)
   }
 
   const handleChangeSetting = (e) => {
    e.preventDefault();
    setActiveSection('setting')
+   setSetting((pre) => !pre)
   };
 
   //logout
