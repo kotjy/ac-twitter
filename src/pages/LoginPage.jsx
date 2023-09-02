@@ -18,11 +18,16 @@ if(password.length === 0){
     return;
 }
  
-const res = await login({account,password});
-console.log(res.data)
-console.log(res.status)
-if (res.status==='success') {     
-    localStorage.setItem('token',res.data.token);
+
+const  {success, data } = 
+await login({account,password});
+console.log(data)
+
+if (success) {     
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.user.id);    
+
+
     Swal.fire({
       position:'top',
       title:'登入成功',

@@ -5,16 +5,14 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
-    const [userName, setUserName]=useState('')
-    const [passWord, setpassWord]=useState('')
+    const [userName, setUserName]= useState('')
+    const [password, setpassWord]= useState('')
     
 
 return(
     <div className={styles.Container}>
         
-      <div>
-      <AClogo/>
-      </div>
+      
       <h1>後台登入</h1>
       <div className={styles.AuthInputContainer}>
          <AuthInput
@@ -26,7 +24,8 @@ return(
       <div className={styles.AuthInputContainer}>
          <AuthInput
          label="密碼"
-         value={passWord}
+         type = 'password'
+         value={password}
          onChange={(input)=>setpassWord(input)} 
          />
       </div>

@@ -16,10 +16,8 @@ const SettingPage = () => {
         <SideBar/>
         </div>
         <div className={styles.SettingDiv}> 
-        <div className="">
-        <p><b>帳戶設定</b></p>
-        <hr></hr>
-        </div>
+
+   
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="帳號"
