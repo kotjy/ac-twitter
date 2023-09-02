@@ -10,7 +10,7 @@ function TweetInput ({onToTweetClick, onOtherClick, userData}) {
   <div className={styles.selfTweetSection}>
     <div className={styles.section}>
       <div className={styles.img} onClick={onOtherClick}>
-        <img src={ userData?.avatar  ||  fakeAvatar }/>
+        <img alt='' src={ userData?.avatar  ||  fakeAvatar }/>
       </div>
 
       <div className={styles.toTweetModal} onClick={onToTweetClick}>
