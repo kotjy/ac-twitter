@@ -26,9 +26,9 @@ if (password === '') {
 			return;
 		}         
  
-const  {success, data } = 
+const  {success, data, errorMessage } = 
 await login({account,password});
-console.log(data)
+
 
 if (success) {     
     localStorage.setItem('token', data.token);
@@ -43,9 +43,10 @@ if (success) {
     navigate('/main')
     return;    
 }else{
+
     Swal.fire({
         position:'top',
-        title:'登入失敗',
+        title:errorMessage || '登入失敗',
         timer: 1000,
         icon: 'error',
         showConfirmButton: false,
