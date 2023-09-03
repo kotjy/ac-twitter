@@ -56,7 +56,6 @@ function ReplyModal({onCloseModal, author, onReplyClick, onTextChange, prompts,t
           </div>
           <div className={styles.modalBottom}>
             <span>{prompts}</span>
-            <div className={styles.warnning}>內容不可空白</div>
             <button
              className={styles.replyButton} 
              onClick={()=> { onReplyClick(author?.id)}}> 

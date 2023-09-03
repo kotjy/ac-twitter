@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 import { useMainFunction } from '../../contexts/MainContext'
 import { useRef } from 'react'
 import { AdminTweets } from '../AdminTweetList.jsx/AdminTweetList';
-import { getUserData, getEditPersonal, getUserLikeTweets, getUserReplyTweets,getUserTweets } from '../../api/userProfile';
+import { getUserData, getEditPersonal, getUserLikeTweets, getUserReplyTweets,getUserTweets, getFollowingList } from '../../api/userProfile';
 
 
 
@@ -153,7 +153,7 @@ function UserProfile({ activeSection, setActiveSection }) {
 
 	const navigate = useNavigate();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  
 	// Modal
 	const handleEditProfile = () => {
 		setModalIsOpen(true);
@@ -196,6 +196,7 @@ function UserProfile({ activeSection, setActiveSection }) {
 				// 個人喜歡推文
 				const likeTweets = await getUserLikeTweets(userId, authToken);
 				setUserLikeTweets(likeTweets);
+
 			} catch (error) {
 				console.error(error);
 			}

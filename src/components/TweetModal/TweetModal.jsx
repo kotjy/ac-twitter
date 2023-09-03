@@ -35,7 +35,6 @@ export function TweetModal ({onCloseModal, onPostTweetClick, onTextChange, userD
         </div>
         <div className={styles.modalbottom}>
           <span >{prompts}</span>
-          <div className={styles.warnning}>字數不可超過140字</div>
           <button className={styles.tweetButton} onClick ={onPostTweetClick}>
             推文
           </button>
