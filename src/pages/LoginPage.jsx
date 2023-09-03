@@ -24,7 +24,7 @@ if(account.length > 50){
 if (password === '') {
 			alert('請輸入密碼!');
 			return;
-		}
+		}         
  
 const  {success, data } = 
 await login({account,password});
@@ -32,10 +32,7 @@ console.log(data)
 
 if (success) {     
     localStorage.setItem('token', data.token);
-
-
     localStorage.setItem('userId', data.user.id);    
-
     Swal.fire({
       position:'top',
       title:'登入成功',

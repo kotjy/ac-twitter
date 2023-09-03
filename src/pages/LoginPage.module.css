@@ -82,3 +82,7 @@ cursor: pointer;
     display: flex;
     justify-content: flex-end; 
 }
+
+.ErrorMessage{
+    color: red;
+}

@@ -7,6 +7,7 @@ import { admin } from '../api/auth';
 import Swal from 'sweetalert2';
 
 const AdminPage = () => {
+
   const [account, setAccount]=useState('')
   const [password, setpassWord]=useState('')
   const navigate = useNavigate();
@@ -59,9 +60,7 @@ const AdminPage = () => {
 return(
     <div className={styles.container}>
         
-      <div>
-      <AClogo/>
-      </div>
+      
       <h1>後台登入</h1>
       <div className={styles.AuthInputContainer}>
          <AuthInput
@@ -73,6 +72,7 @@ return(
       <div className={styles.AuthInputContainer}>
          <AuthInput
          label="密碼"
+         type = 'password'
          value={password}
          onChange={(input)=>setpassWord(input)} 
          />
