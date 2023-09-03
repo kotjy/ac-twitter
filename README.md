@@ -3,16 +3,16 @@
 為了讓Alpha Camp 的使用者有一個專業的社群平台交流，於是建立此專案
 
 ## 專案畫面
-*LoginPage
+* LoginPage
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/4de345dc-4fae-4cbd-a859-9eae187487f3)
 
-*MainPage
+* MainPage
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/acc99a13-f33c-444a-8647-b8b19ef4b7c8)
 
-  *MainPage 上傳貼文
+  * MainPage 上傳貼文
   ![image](https://github.com/kotjy/ac-twitter/assets/132338192/eca55969-2f03-42f6-af75-631454da7c75)
 
-  *MainPage 個人資料
+  * MainPage 個人資料
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/7dc58b99-be23-4f84-a14c-43d5d641c4a9)
 
 
@@ -20,44 +20,44 @@
 
 ### 註冊/登入頁面
 
-*可以讓新使用者註冊新的帳號，並登入主頁
+* 可以讓新使用者註冊新的帳號，並登入主頁
 
-*後台只有管理帳號可以登入
+* 後台只有管理帳號可以登入
 
-*註冊/編輯時，account 和 email 不能與其他人重複，若有重複會跳出錯誤提示
+* 註冊/編輯時，account 和 email 不能與其他人重複，若有重複會跳出錯誤提示
 
 ### 首頁
 
-*可以點擊輸入框或推文按鈕新增推文
+* 可以點擊輸入框或推文按鈕新增推文
 
-*所有 Tweets 依 create 日期排序，最新的在前
+* 所有 Tweets 依 create 日期排序，最新的在前
 
-*可以針對特定推文進行回覆
+* 可以針對特定推文進行回覆
 
-*點擊貼文中使用者頭像時，能瀏覽該使用者的個人資料及推文
+* 點擊貼文中使用者頭像時，能瀏覽該使用者的個人資料及推文
 
-*可以針對右側欄位和使用者進行跟隨
+* 可以針對右側欄位和使用者進行跟隨
 
 
 ### 個人資料
 
-*瀏覽使用者個人資訊
+* 瀏覽使用者個人資訊
 
-*編輯個人資料，包含名稱，自我介紹，背景圖，大頭照
+* 編輯個人資料，包含名稱，自我介紹，背景圖，大頭照
 
-*瀏覽使用者相關推文，喜歡的內容
+* 瀏覽使用者相關推文，喜歡的內容
 
-*可以查看追蹤者，也可以追蹤別人跟取消追蹤
+* 可以查看追蹤者，也可以追蹤別人跟取消追蹤
 
 ### 設定
 
-*可以更改使用者帳戶資訊
+* 可以更改使用者帳戶資訊
 
 ### 後台
 
-*可以瀏覽所有貼文，也有刪除貼文的權限
+* 可以瀏覽所有貼文，也有刪除貼文的權限
 
-*查看所有使用者相關資訊
+* 查看所有使用者相關資訊
 
 
 ## install
@@ -82,13 +82,3 @@
 
 Local:  (http://localhost:3000/)
 
-
-
-
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
