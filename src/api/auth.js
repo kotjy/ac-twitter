@@ -8,21 +8,25 @@ export const login = async({account,password}) =>{
     const {data} = await axios.post(`${authUrl}/users/signin`, {account,password});
       return { success: true, ...data }
     }catch(error){
-        console.error(error)
-        return { success: false};
+        const errormessage = error.response.data.message
+        console.error('[Login Failed]:',errormessage)
+        return { success: false, errorMessage: errormessage};
     }
 }
 
 //註冊
 export const signup = async({account, name, email, password, checkPassword}) =>{
-try{
+
+    try{
  const {data} = await axios.post(`${authUrl}/users`, 
  {account,name,email, password,checkPassword});
   return { success: true, data };
 }catch(error){
-    console.error('[Signup Failed]:', error)
-    return { success: false}; 
+    const errormessage = error.response.data.message
+    console.error('[Login Failed]:',errormessage)
+    return { success: false, errorMessage: errormessage};
 }
+
 }
 
 //設定
@@ -73,8 +77,9 @@ export const admin = async({account,password}) =>{
 
    return { success: true, ...data }
    }catch(error){
-       console.error(error)
-       return { success: false};
+    const errormessage = error.response.data.message
+    console.error('[Login Failed]:',errormessage)
+    return { success: false, errorMessage: errormessage};
    }
 }
 

@@ -45,7 +45,7 @@ const SignupPage = () => {
 			return;
 		}
    
-      const { success, data } = await signup({
+      const { success, data ,errorMessage} = await signup({
       account, name, email, password, checkPassword});
 
       if (success && password===checkPassword) {
@@ -62,7 +62,7 @@ const SignupPage = () => {
        }
        Swal.fire({
          position: 'top',
-         title: '註冊失敗！',
+         title:errorMessage || '登入失敗',
          timer: 1000,
          icon: 'error',
          showConfirmButton: false,

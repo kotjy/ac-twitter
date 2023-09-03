@@ -27,7 +27,7 @@ const AdminPage = () => {
           return;
         }
      
-    const  {success, data } = 
+    const  {success, data , errorMessage} = 
     await admin({account,password});
     console.log(data)
     console.log(success)
@@ -48,7 +48,7 @@ const AdminPage = () => {
     }else{
         Swal.fire({
             position:'top',
-            title:'登入失敗',
+            title:errorMessage || '登入失敗',
             timer: 1000,
             icon: 'error',
             showConfirmButton: false,
