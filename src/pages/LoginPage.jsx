@@ -24,7 +24,7 @@ if(account.length > 50){
 if (password === '') {
 			alert('請輸入密碼!');
 			return;
-		}
+		}         
  
 const  {success, data } = 
 await login({account,password});

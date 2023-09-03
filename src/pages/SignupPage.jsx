@@ -18,12 +18,23 @@ const SignupPage = () => {
 
    const handleClick = async (e) =>{
       e.preventDefault();
-      const signupElement = [account, name, email, password, checkPassword]
+      const elementsToCheck = [
+         { element: account, errorMessage: '帳號不可為空' },
+         { element: name, errorMessage: '名稱不可為空' },
+         { element: email, errorMessage: '信箱不可為空' },
+         { element: password, errorMessage: '密碼不可為空' },
+         { element: checkPassword, errorMessage: '密碼不可為空' },
+     ];
+     
+     for (const { element, errorMessage } of elementsToCheck) {
+         if (element.length === 0) {
+             alert(errorMessage);
+             return;
+         }
+     }
 
-      for(const element of signupElement){
-         if(element.length===0){
-            return
-         }else if (account.length > 50) {
+      
+         if (account.length > 50) {
 			alert('帳號字數不可超過 50 字!');
 			return;
 		} else if (name.length > 50) {
@@ -33,7 +44,7 @@ const SignupPage = () => {
 			alert('密碼與密碼確認不相同');
 			return;
 		}
-   }
+   
       const { success, data } = await signup({
       account, name, email, password, checkPassword});
 
@@ -48,11 +59,6 @@ const SignupPage = () => {
          });
          navigate('/login')
          return;
-
-       }else if(email){
-
-         
-
        }
        Swal.fire({
          position: 'top',
@@ -75,6 +81,9 @@ const SignupPage = () => {
            value={account}
            onChange={(input)=>setaccount(input)} 
            />
+           {account.length > 50 && (
+                    <span className={styles.ErrorMessage}>帳號字數不可超過 50 字!</span>
+                )}
         </div>
         <div className={styles.AuthInputContainer}>
            <AuthInput
@@ -82,6 +91,9 @@ const SignupPage = () => {
            value={name}
            onChange={(input) =>setname(input)} 
            />
+           {name.length > 50 && (
+                    <span className={styles.ErrorMessage}>名稱字數不可超過 50 字!</span>
+                )}
         </div>
         <div className={styles.AuthInputContainer}>
            <AuthInput
