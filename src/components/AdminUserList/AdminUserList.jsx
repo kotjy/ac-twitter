@@ -35,7 +35,7 @@ function UserCard({ allUserData }) {
 
 						<div className={styled.likeWrap}>
 							<img src={heart} alt='' />
-							<span>{user?.beLikedCounts}</span>
+							<span>{user?.likeCounts}</span>
 						</div>
 					</div>
 

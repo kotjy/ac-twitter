@@ -14,6 +14,7 @@ import { postFollow, deleteFollow,  } from "../../api/followship";
 import { postReply, getAllReply } from "../../api/reply";
 import { postLike, postUnlike } from "../../api/like";
 import { useState } from "react";
+import { login } from "../../api/auth";
 
 function Main() {
 	const navigate = useNavigate();
@@ -75,9 +76,14 @@ const {
 
   // 點擊新增推文按鈕
 	const handlePostTweetClick = async () => {
+		if (prompt.trim() === '') { 
+			setPrompt('內容不可空白')
+			setText('');
+			return; }
 		if (text.length === 0) {
 			setPrompt('內容不可空白');
-		} else if (text.length > 140) {
+		}
+		 else if (text.length > 140) {
 			setPrompt('字數不可超過 140 字');
 		} else {
 			setPrompt('');
@@ -328,12 +334,18 @@ const {
 
 				const userId = localStorage.getItem('userId');
 				const authToken = localStorage.getItem('token');
+				const role = localStorage.getItem('role')
 				const tweet = await getTweets(authToken);
 				const data = await getUserData(userId, authToken);
 				setUserData(data);
-
+        
+        
 				if (!authToken) {
 					navigate('/login');
+					return;
+				} 
+				if (role !== 'user'){
+					navigate('/login')
 					return;
 				}
 				setTweets(tweet.map((tweet) => ({ ...tweet })));

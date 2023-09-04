@@ -32,7 +32,8 @@ await login({account,password});
 
 if (success) {     
     localStorage.setItem('token', data.token);
-    localStorage.setItem('userId', data.user.id);    
+    localStorage.setItem('userId', data.user.id);   
+    localStorage.setItem('role', data.user.role); 
     Swal.fire({
       position:'top',
       title:'登入成功',

@@ -62,7 +62,7 @@ function TweetList({ onTweetClick, onReplyClick, onLikeClick, tweetList, onOther
 					>
 						{/*eslint-disable-next-line jsx-a11y/alt-text*/}
 						{item?.isLiked ? <img src={redLikeIcon} /> : <img src={likeIcon} />}
-					
+					  {item?.likeCount}
 					</button>
 				</div>
 			</div>

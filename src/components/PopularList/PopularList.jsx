@@ -71,7 +71,7 @@ const navigate = useNavigate();
 						onOtherClick(popular?.id);
 					}}
 				>
-					{popular.account}
+					@{popular.account}
 				</div>
 			</div>
 			<button
