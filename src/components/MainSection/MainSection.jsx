@@ -9,6 +9,7 @@ import ReplyList from '../ReplyList/ReplyList.jsx';
 import styles from './MainSection.module.scss'
 import SettingPage from '../../pages/SettingPage.jsx';
 
+
 function MainSection ({
 	setSetting,
   activeSection,
