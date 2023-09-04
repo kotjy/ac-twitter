@@ -107,7 +107,7 @@ const navigate = useNavigate();
 return (
   <div className={styles.container}>
      <div className={styles.topic}>
-      <p>Popular</p>
+      <p>推薦跟隨</p>
      </div>
      <div className= {styles.others}>
       {listItems}

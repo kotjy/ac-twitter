@@ -16,7 +16,7 @@ function ReplyList({ replies }) {
 					</div>
 				</div>
 				<div className={styles.replyTo}>
-					回覆&nbsp;<div>{`@${item?.Tweet?.User?.account}`}</div>
+					回覆&nbsp;<div>{`@${item?.User?.account}`}</div>
 				</div>
 				<div className={styles.contentSection}>{item?.comment}</div>
 			</div>

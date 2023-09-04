@@ -65,7 +65,7 @@ export function AdminTweets({
 										{activeSection === 'following' ||
 										activeSection === 'follower' ||
 										activeComponent === 'tweets'
-											? tweet?.name
+											? tweet?.User?.name
 											: tweet?.User?.name}
 									</span>
 									{/* 追隨者、正在追隨不顯示 */}
