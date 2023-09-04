@@ -2,80 +2,83 @@
 
 為了讓Alpha Camp 的使用者有一個專業的社群平台交流，於是建立此專案
 
-## 專案視覺
-*LoginPage
+## 專案畫面
+* LoginPage
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/4de345dc-4fae-4cbd-a859-9eae187487f3)
 
-*MainPage
+* MainPage
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/acc99a13-f33c-444a-8647-b8b19ef4b7c8)
 
-  *MainPage 上傳貼文
-  ![image](https://github.com/kotjy/ac-twitter/assets/132338192/fc114e78-dd02-41ef-aa57-bb4c608632ad)
-  
-  *MainPage 個人資料
+  * MainPage 上傳貼文
+  ![image](https://github.com/kotjy/ac-twitter/assets/132338192/eca55969-2f03-42f6-af75-631454da7c75)
+
+  * MainPage 個人資料
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/7dc58b99-be23-4f84-a14c-43d5d641c4a9)
 
 
+## 專案功能
 
-### `npm start`
+### 註冊/登入頁面
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* 可以讓新使用者註冊新的帳號，並登入主頁
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* 後台只有管理帳號可以登入
 
-### `npm test`
+* 註冊/編輯時，account 和 email 不能與其他人重複，若有重複會跳出錯誤提示
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 首頁
 
-### `npm run build`
+* 可以點擊輸入框或推文按鈕新增推文
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* 所有 Tweets 依 create 日期排序，最新的在前
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* 可以針對特定推文進行回覆
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* 點擊貼文中使用者頭像時，能瀏覽該使用者的個人資料及推文
 
-### `npm run eject`
+* 可以針對右側欄位和使用者進行跟隨
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 個人資料
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* 瀏覽使用者個人資訊
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* 編輯個人資料，包含名稱，自我介紹，背景圖，大頭照
 
-## Learn More
+* 瀏覽使用者相關推文，喜歡的內容
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* 可以查看追蹤者，也可以追蹤別人跟取消追蹤
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 設定
 
-### Code Splitting
+* 可以更改使用者帳戶資訊
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 後台
 
-### Analyzing the Bundle Size
+* 可以瀏覽所有貼文，也有刪除貼文的權限
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* 查看所有使用者相關資訊
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## install
 
-### Advanced Configuration
+1.打開terminal，Clone 此專案至本機電腦
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`git clone https://github.com/LeoChiang0917/A4-ALPHA-Shop-I.git`
 
-### Deployment
+2.開啟terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`cd ac-twitter`
 
-### `npm run build` fails to minify
+3.安裝npm套件
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm install`
+
+4.開啟專案
+
+`npm run start`
+
+5.出現以下內容表示伺服器已啟動
+
+Local:  (http://localhost:3000/)
+

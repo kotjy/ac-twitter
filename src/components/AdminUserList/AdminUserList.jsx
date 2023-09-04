@@ -15,7 +15,7 @@ function UserCard({ allUserData }) {
 			<li key={user.id} id={user.id}>
 				<div className={styled.card}>
 					<div>
-						<img src={user.cover || fakeBack} alt='' className={styled.cover} />
+						<img src={user.banner || fakeBack} alt='' className={styled.cover} />
 					</div>
 
 					<div className={styled.avatar}>

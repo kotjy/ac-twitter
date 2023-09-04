@@ -266,7 +266,8 @@ const {
 			const userLoginID = localStorage.getItem('userId');
 			console.log(authToken);
 			const followingList = await getFollowingList(userLoginID, authToken);
-
+      console.log(userLoginID);
+			console.log(otherUserId);
 			if (followingList.some((popular) => popular.id === otherUserId)) {
 				deleteFollow(authToken, otherUserId);
 			} else {

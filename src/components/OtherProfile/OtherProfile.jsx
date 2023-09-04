@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { useMainFunction } from '../../contexts/MainContext'
 import OtherTweetList from '../OtherTweetList/OtherTweetList'
 import OtherReplyList from '../OtherReplyList/OtherReplyList'
+import { useEffect } from 'react'
+import { getFollowingList } from '../../api/userProfile'
 
 export function StateButton({ buttonStatus, setButtonStatus }){
   const handleTweetClick =(e) => {
@@ -50,11 +52,39 @@ export function StateButton({ buttonStatus, setButtonStatus }){
   );
  }
 
- function UserContent ({userData, onFollowClick}) {
+function UserContent ({userData, onFollowClick}) {
   const handleFollowStatus = (data) => {
     const result = data.isFollowed;
     return (data.isFollowed = !result);
   };
+  
+  
+ const [ followingList, setFollowingList] = useState([]);
+ const [ isFollowing, setIsFollowing] = useState(false);
+
+ 
+  useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const authToken = localStorage.getItem('token');
+				const userId = localStorage.getItem('userId');
+				
+        const res = await getFollowingList(userId, authToken);
+        setFollowingList(res);
+				
+       const isFollow = followingList.some(item => item.id === userData.id);
+       
+       setIsFollowing(isFollow)
+       
+      
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userData, followingList]);
+
 
   return (
     <>
@@ -78,10 +108,10 @@ export function StateButton({ buttonStatus, setButtonStatus }){
         handleFollowStatus(userData);
       }}
       className={`${styled.followButton} ${
-        userData?.isFollowed ? styled.following : styled.notFollowing
+        isFollowing ? styled.following : styled.notFollowing
       }`}
      >
-      {userData?.isFollowed ? '正在跟隨' : '跟隨'} 
+      {isFollowing ? '正在跟隨' : '跟隨'} 
       </button>
      </div>
      </>
@@ -119,10 +149,12 @@ export function StateButton({ buttonStatus, setButtonStatus }){
           userTweets,
           userReplyTweets,
           userLikeTweets,
-          isFollowed
+          isFollowed,
   }  = useMainFunction();
-
+ 
   const [buttonStatus, setButtonStatus] = useState('推文');
+ 
+  
 
   return(
    <div className={styled.wrap}>
