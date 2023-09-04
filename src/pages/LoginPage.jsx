@@ -64,6 +64,7 @@ return (
       <div className={styles.AuthInputContainer}>
          <AuthInput
          label="帳號"
+         placeholder= '請輸入帳號'
          value={account}
          onChange={(Input)=>setAccount(Input)} 
          />
@@ -71,6 +72,7 @@ return (
       <div className={styles.AuthInputContainer}>
          <AuthInput
          type = 'password'
+         placeholder= '請輸入密碼'
          label="密碼"
          value={password}
          onChange={(input)=>setpassWord(input)} 
@@ -81,7 +83,7 @@ return (
      
       <div className={styles.LinkContainer}>
       <Link to="/signup">
-      <u className={styles.LinkText}>註冊 Alphitter</u>
+      <u className={styles.LinkText}>註冊</u>
       </Link>
       <span className={styles.LinkText}>.</span>
       <Link to="/admin">

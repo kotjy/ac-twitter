@@ -4,7 +4,8 @@
 
 ## 專案畫面
 * LoginPage
-![image](https://github.com/kotjy/ac-twitter/assets/132338192/4de345dc-4fae-4cbd-a859-9eae187487f3)
+![image](https://github.com/kotjy/ac-twitter/assets/132338192/e0686875-c54b-45a3-8378-d179ea641389)
+
 
 * MainPage
 ![image](https://github.com/kotjy/ac-twitter/assets/132338192/acc99a13-f33c-444a-8647-b8b19ef4b7c8)
