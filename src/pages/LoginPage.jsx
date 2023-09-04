@@ -85,7 +85,7 @@ return (
       <Link to="/signup">
       <u className={styles.LinkText}>註冊</u>
       </Link>
-      <span className={styles.LinkText}>.</span>
+      <span className={styles.LinkText}>•</span>
       <Link to="/admin">
       <u className={styles.LinkText}>後台登入</u>
       </Link>

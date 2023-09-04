@@ -5,6 +5,7 @@ import { setting, setpassword } from '../api/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
+
 const SettingPage = () => {
 
    const [account, setaccount]=useState('')
