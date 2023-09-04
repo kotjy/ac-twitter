@@ -150,7 +150,6 @@ function UserContent ({userData, onFollowClick}) {
           userReplyTweets,
           userLikeTweets,
           isFollowed,
-          otherUserData,
   }  = useMainFunction();
  
   const [buttonStatus, setButtonStatus] = useState('推文');

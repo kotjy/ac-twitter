@@ -10,7 +10,6 @@ export const postLike = async (token, id) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
-		console.log(res);
 		return res.data;
 	} catch (error) {
 		console.error('[Post Unlike failed]: ', error.response.data);
@@ -26,7 +25,6 @@ export const postUnlike = async (token, id) => {
 				Authorization: 'Bearer ' + token,
 			},
 		});
-		console.log(res);
 		return res.data;
 	} catch (error) {
 		console.error('[Post Unlike failed]: ', error.response.data);
