@@ -78,6 +78,7 @@ const SignupPage = () => {
         <div className={styles.AuthInputContainer}>
            <AuthInput
            label="帳號"
+           placeholder= '請輸入帳號'
            value={account}
            onChange={(input)=>setaccount(input)} 
            />
@@ -88,6 +89,7 @@ const SignupPage = () => {
         <div className={styles.AuthInputContainer}>
            <AuthInput
            label="名稱"
+           placeholder= '請輸入名稱'
            value={name}
            onChange={(input) =>setname(input)} 
            />
@@ -98,6 +100,7 @@ const SignupPage = () => {
         <div className={styles.AuthInputContainer}>
            <AuthInput
            label="Email"
+           placeholder= '請輸入Email'
            value={email}
            onChange={(input)=>setemail(input)} 
            />
@@ -106,6 +109,7 @@ const SignupPage = () => {
            <AuthInput
            type = 'password'
            label="密碼"
+           placeholder= '請輸入密碼'
            value={password}
            onChange={(input)=>setpassWord(input)} 
            />
@@ -114,6 +118,7 @@ const SignupPage = () => {
            <AuthInput
            type = 'password'
            label="密碼確認"
+           placeholder= '請再次輸入密碼'
            value={checkPassword}
            onChange={(input)=>setcheckPassword(input)} 
            />

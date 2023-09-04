@@ -59,8 +59,9 @@ export const setpassword = async({userId, password, email, name, account, checkP
         });
         return { success: true, data };
     } catch (error) {
+        const errormessage = error.response.data.message
         console.error('[PasswordChange Failed]:', error);
-        return { success: false };
+        return { success: false , errorMessage: errormessage};
     }
    
 
