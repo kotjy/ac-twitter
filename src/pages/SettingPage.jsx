@@ -35,7 +35,7 @@ const SettingPage = () => {
    const userId =  localStorage.getItem('userId');
    const handleSaveClick = async (e) =>{
       e.preventDefault();
-      const { success, data } = await setpassword({password, email, name, userId, account, checkPassword})
+      const { success, data ,errorMessage} = await setpassword({password, email, name, userId, account, checkPassword})
      
       if (success && password===checkPassword) {
          localStorage.setItem('data', data);
@@ -51,7 +51,7 @@ const SettingPage = () => {
        }
        Swal.fire({
          position: 'top',
-         title: '設定失敗！',
+         title:errorMessage || '設定失敗',
          timer: 1000,
          icon: 'error',
          showConfirmButton: false,
@@ -62,23 +62,33 @@ const SettingPage = () => {
     return(
         <div className={styles.SettingContainer}>
         <div className={styles.SettingDiv}> 
+
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="帳號"
+           placeholder= '請設定帳號'
            value={account}
            onChange={(input)=>setaccount(input)} 
            />
+           {account.length > 50 && (
+               <span className={styles.ErrorMessage}>帳號字數不可超過 50 字!</span>
+            )}
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="名稱"
+           placeholder= '請設定名稱'
            value={name}
            onChange={(input) =>setname(input)} 
            />
+           {name.length > 50 && (
+               <span className={styles.ErrorMessage}>名稱字數不可超過 50 字!</span>
+            )}
         </div>
         <div className={styles.SettingInputContainer}>
            <AuthInput
            label="Email"
+           placeholder= '請設定Email'
            value={email}
            onChange={(input)=>setemail(input)} 
            />
@@ -87,6 +97,7 @@ const SettingPage = () => {
            <AuthInput
            type = 'password'
            label="密碼"
+           placeholder= '請設定密碼'
            value={password}
            onChange={(input)=>setpassWord(input)}  
            />
@@ -95,12 +106,13 @@ const SettingPage = () => {
            <AuthInput
            type = 'password'
            label="確認密碼"
+           placeholder= '請再次設定密碼'
            value={checkPassword}
            onChange={(input)=>setcheckPassword(input)} 
            />
         </div>
         <div className={styles.ButtonContainer}>
-        <button className={styles.Authbutton} onClick={handleSaveClick}>儲存</button>
+        <button className={styles.settingAuthbutton} onClick={handleSaveClick}>儲存</button>
         </div>
         </div>
         </div>
