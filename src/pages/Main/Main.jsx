@@ -14,7 +14,6 @@ import { postFollow, deleteFollow,  } from "../../api/followship";
 import { postReply, getAllReply } from "../../api/reply";
 import { postLike, postUnlike } from "../../api/like";
 import { useState } from "react";
-import { login } from "../../api/auth";
 
 function Main() {
 	const navigate = useNavigate();
@@ -76,13 +75,9 @@ const {
 
   // 點擊新增推文按鈕
 	const handlePostTweetClick = async () => {
-		if (prompt.trim() === '') { 
-			setPrompt('內容不可空白')
-			setText('');
-			return; }
-		if (text.length === 0) {
+		
+		if (text.length === 0 || text.trim() === '') {
 			setPrompt('內容不可空白');
-			
 		}
 		 else if (text.length > 140) {
 			setPrompt('字數不可超過 140 字');
@@ -195,12 +190,8 @@ const {
 
   //點擊回覆按鈕，新增回覆
 	const handleReplyClick = async (tweetID) => {
-		if (prompt.trim() === '') { 
-			setPrompt('內容不可空白')
-			setReplyText('');
-			return; }
-
-		if (replyText.length === 0) {
+		
+		if (replyText.length === 0 || replyText.trim() === '') {
 			setPrompt('內容不可空白');
 		} else if (replyText.length > 140) {
 			setPrompt('字數不可超過 140 字');
